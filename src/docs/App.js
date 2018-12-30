@@ -5,7 +5,8 @@ import Lib from "../lib";
 class App {
   constructor() {
     const libInstance = new Lib({
-      text: "Welcome to this website! How are you doing today?"
+      text: "Welcome to this website! How are you doing today?",
+      move: "h1"
     });
     console.log("Demo loaded!", libInstance);
   }
