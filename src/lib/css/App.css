@@ -6,6 +6,13 @@
     right: 0;
     top: 0;
     width: 100%;
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.hello-bar.hello-bar.hello-bar--is-visible {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .hello-bar p {

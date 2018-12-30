@@ -17,6 +17,14 @@ class App {
     this.calculateHeight();
     this.moveElements(document.body);
     this.moveElements(this.settings.move);
+    this.showBar();
+  }
+
+  showBar() {
+    this.bar.style.transition = this.settings.duration || "0.5s";
+    setTimeout(() => {
+      this.bar.classList.add("hello-bar--is-visible");
+    }, this.settings.delay || 1);
   }
 
   colorizeBar() {
