@@ -30,6 +30,27 @@
     line-height: 1;
     white-space: nowrap;
 }
+
+.hello-bar p.hello-bar-text button {
+    appearance: none;
+    background: none;
+    display: inline-block;
+    width: auto;
+    border: none;
+    padding: 0 0.75rem;
+    margin-top: -0.66rem;
+    margin-bottom: -0.66rem;
+    font: inherit;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-left: 0.75rem;
+}
+
+.hello-bar a {
+    color: inherit;
+    font-weight: bold;
+}
 .hello-bar p.hello-bar-text::before,
 .hello-bar p.hello-bar-text::after {
     content: "";

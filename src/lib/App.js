@@ -31,8 +31,8 @@ class App {
     }
     this.insertBar();
     this.functionBar();
-    this.colorizeBar();
     this.calculateHeight();
+    this.colorizeBar();
     this.moveElements(document.body);
     this.moveElements(this.settings.move);
     this.showBar();
@@ -72,6 +72,17 @@ class App {
     this.bar.style.color =
       this.settings.textColor || fontColorContrast(backgroundColor);
     this.bar.style.textAlign = this.settings.align || "center";
+    if (document.querySelector(".hello-bar p.hello-bar-text button")) {
+      document.querySelector(
+        ".hello-bar p.hello-bar-text button"
+      ).style.height = `${this.height}px`;
+      document.querySelector(".hello-bar p.hello-bar-text button").style.color =
+        this.settings.background || "#eeeeee";
+      document.querySelector(
+        ".hello-bar p.hello-bar-text button"
+      ).style.background =
+        this.settings.textColor || fontColorContrast(backgroundColor);
+    }
   }
 
   calculateHeight() {
