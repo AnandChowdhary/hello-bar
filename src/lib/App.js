@@ -13,7 +13,8 @@ class App {
     }
     this.insertBar();
     this.calculateHeight();
-    this.moveElements(this.settings.move, this.height);
+    this.moveElements(document.body);
+    this.moveElements(this.settings.move);
   }
 
   calculateHeight() {
@@ -37,23 +38,33 @@ class App {
     }
   }
 
-  moveElements(elements, height) {
+  moveElements(elements) {
     if (!elements) return;
+    // e.g., "h1.hero-title"
     if (typeof elements === "string") {
       const allElements = document.querySelectorAll(elements);
       for (let i = 0; i < allElements.length; i++) {
-        this.moveElements(allElements[i], height);
+        this.moveElements(allElements[i]);
       }
+      // e.g., ["h1.hero-title", document.querySelector("a#moveMe")]
     } else if (elements.constructor === Array && elements.length) {
       for (let i = 0; i < elements.length; i++) {
-        this.moveElements(elements[i], height);
+        this.moveElements(elements[i]);
       }
+      // e.g., document.querySelector("a#moveMe")
     } else if (typeof elements === "object") {
       if (
         typeof elements.classList === "object" &&
         typeof elements.classList.add === "function"
       ) {
-        console.log(this.height);
+        const style =
+          elements.currentStyle || window.getComputedStyle(elements);
+        if (typeof style === "object" && style.marginTop) {
+          elements.style.marginTop = `${parseInt(style.marginTop) +
+            this.height}px`;
+        } else {
+          elements.style.marginTop = `${this.height}px`;
+        }
         elements.classList.add("hello-bar--has-moved");
       }
     }
