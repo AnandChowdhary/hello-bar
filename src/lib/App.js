@@ -42,19 +42,25 @@ class App {
   }
 
   showBar() {
-    this.bar.style.transition = this.settings.duration || "0.5s";
+    if (!document.querySelector(`#${this.id}`)) return;
+    this.bar.style.transition = (this.settings.duration || 500) + "ms";
     setTimeout(() => {
       this.bar.classList.add("hello-bar--is-visible");
     }, this.settings.delay || 1);
   }
 
   hideBar() {
+    if (!document.querySelector(`#${this.id}`)) return;
     this.bar.classList.remove("hello-bar--is-visible");
     const movedElements = document.querySelectorAll(".hello-bar--has-moved");
     for (let i = 0; i < movedElements.length; i++) {
       const currentMargin = parseInt(movedElements[i].style.marginTop);
       movedElements[i].style.marginTop = `${currentMargin - this.height}px`;
+      movedElements[i].classList.remove("hello-bar--has-moved");
     }
+    setTimeout(() => {
+      this.bar.parentNode.removeChild(this.bar);
+    }, (this.settings.duration || 500) + 1);
   }
 
   functionBar() {
@@ -66,6 +72,7 @@ class App {
   }
 
   colorizeBar() {
+    if (!document.querySelector(`#${this.id}`)) return;
     const backgroundColor = this.settings.background || "#eeeeee";
     this.bar.style.backgroundColor = backgroundColor;
     if (document.querySelector(".hello-bar .hello-bar-text--after"))
@@ -92,6 +99,7 @@ class App {
   }
 
   calculateHeight() {
+    if (!document.querySelector(`#${this.id}`)) return;
     if (this.settings.size)
       this.bar.classList.add(`hello-bar--size-${this.settings.size}`);
     if (
@@ -131,7 +139,8 @@ class App {
     } else if (typeof elements === "object") {
       if (
         typeof elements.classList === "object" &&
-        typeof elements.classList.add === "function"
+        typeof elements.classList.add === "function" &&
+        !elements.classList.contains("hello-bar--has-moved")
       ) {
         const style =
           elements.currentStyle || window.getComputedStyle(elements);

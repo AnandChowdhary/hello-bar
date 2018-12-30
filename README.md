@@ -47,7 +47,7 @@ new HelloBar({
   hideClose: false, // Set to `true` to hide close button
   fixed: false, // Set to `true` to set the position as fixed (on scroll)
   move: null, // Element(s) to force add margin-top to, in case you have any absolutely positioned elements
-  duration: "0.5s", // Animation duration in CSS (e.g. "1s", "200ms", "none", etc.)
+  duration: 500, // Animation duration in miliseconds
   delay: 1, // Delay in miliseconds
   align: "center", // Text alignment in CSS ("left", "right", or "center")
   background: "#eee", // Background color
