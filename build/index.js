@@ -1,6 +1,6 @@
 /*!
  * 
- *   hello-bar v0.4.1
+ *   hello-bar v0.5.0
  *   https://github.com/AnandChowdhary/hello-bar
  * 
  *   Copyright (c) Anand Chowdhary (https://github.com/AnandChowdhary)

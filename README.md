@@ -31,9 +31,11 @@ new HelloBar({
 
 ### Call-to-action button
 
+Add class `cta` to your `a` or `button` for a large call-to-action button. Add the class `wiggle` for attention-catching animated wiggling.
+
 ```js
 new HelloBar({
-  text: 'Buy my new book now! <a class="cta" href="#">Get $10 off!</a>'
+  text: 'Buy my new book now! <a class="cta wiggle" href="#">Get $10 off!</a>'
 });
 ```
 

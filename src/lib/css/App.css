@@ -107,6 +107,23 @@
     border: 0.5rem solid;
     margin-left: 0.5rem;
 }
+.hello-bar.hello-bar--size-large p.hello-bar-text .cta.wiggle {
+    animation: hello-bar-wiggle 5s infinite;
+}
+
 .hello-bar.hello-bar--size-large button.hello-bar-button svg {
     height: 1.33rem;
+}
+
+@keyframes hello-bar-wiggle {
+    2% { transform: translateX(3px) rotate(2deg); }
+    4% { transform: translateX(-3px) rotate(-2deg); }
+    6% { transform: translateX(3px) rotate(2deg); }
+    8% { transform: translateX(-3px) rotate(-2deg); }
+    10% { transform: translateX(2px) rotate(1deg); }
+    12% { transform: translateX(-2px) rotate(-1deg); }
+    14% { transform: translateX(2px) rotate(1deg); }
+    16% { transform: translateX(-2px) rotate(-1deg); }
+    18% { transform: translateX(1px) rotate(0); }
+    20% { transform: translateX(-1px) rotate(0); }
 }
