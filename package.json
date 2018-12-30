@@ -138,5 +138,8 @@
         "@babel/plugin-proposal-class-properties"
       ]
     ]
+  },
+  "dependencies": {
+    "font-color-contrast": "^1.0.3"
   }
 }

@@ -8,5 +8,5 @@
  *   This source code is licensed under the MIT license found in the
  *   LICENSE file in the root directory of this source tree.
  *   
- */body{color:#000}
+ */.hello-bar{box-sizing:border-box;font-size:90%;position:absolute;left:0;right:0;top:0;width:100%}.hello-bar p{margin:0;padding:.66rem}.hello-bar.hello-bar--is-fixed{position:fixed}
 /*# sourceMappingURL=index.css.map */

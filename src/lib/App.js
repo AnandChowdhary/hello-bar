@@ -1,30 +1,42 @@
 import "./css/App.css";
+import fontColorContrast from "font-color-contrast";
 
 class App {
   constructor(settings) {
     this.settings = settings || {};
-    this.element = document.createElement("div");
-    this.element.innerHTML = `
+    this.bar = document.createElement("div");
+    this.bar.innerHTML = `
       <p>${this.settings.text}</p>
     `;
-    this.element.classList.add("hello-bar");
+    this.bar.classList.add("hello-bar");
     if (this.settings.fixed) {
-      this.element.classList.add("hello-bar--is-fixed");
+      this.bar.classList.add("hello-bar--is-fixed");
     }
     this.insertBar();
+    this.colorizeBar();
     this.calculateHeight();
     this.moveElements(document.body);
     this.moveElements(this.settings.move);
   }
 
+  colorizeBar() {
+    const backgroundColor = this.settings.background || "#eeeeee";
+    this.bar.style.backgroundColor = backgroundColor;
+    if (this.settings.textColor) {
+      this.bar.style.color = this.settings.textColor;
+    } else {
+      this.bar.style.color = fontColorContrast(backgroundColor);
+    }
+  }
+
   calculateHeight() {
     if (
-      typeof this.element.getBoundingClientRect === "function" &&
-      this.element.getBoundingClientRect().height
+      typeof this.bar.getBoundingClientRect === "function" &&
+      this.bar.getBoundingClientRect().height
     ) {
-      this.height = this.element.getBoundingClientRect().height;
+      this.height = this.bar.getBoundingClientRect().height;
     } else {
-      this.height = this.element.offsetHeight;
+      this.height = this.bar.offsetHeight;
     }
     this.height = parseInt(this.height);
   }
@@ -32,9 +44,9 @@ class App {
   insertBar() {
     const firstChild = document.querySelector("body > *");
     if (firstChild) {
-      document.body.insertBefore(this.element, firstChild);
+      document.body.insertBefore(this.bar, firstChild);
     } else {
-      document.body.appendChild(this.element);
+      document.body.appendChild(this.bar);
     }
   }
 
