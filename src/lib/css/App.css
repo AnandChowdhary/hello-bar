@@ -15,11 +15,32 @@
     opacity: 1;
 }
 
-.hello-bar p {
+.hello-bar p.hello-bar-text {
     margin: 0;
     padding: 0.66rem;
+    max-width: 100%;
+    line-height: 1;
 }
 
 .hello-bar.hello-bar--is-fixed {
     position: fixed;
+}
+
+.hello-bar button.hello-bar-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0 0.75rem;
+    margin: 0;
+    width: auto;
+    color: inherit;
+    font-size: 150%;
+}
+.hello-bar button.hello-bar-button svg {
+    height: 1rem;
 }

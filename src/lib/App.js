@@ -4,15 +4,31 @@ import fontColorContrast from "font-color-contrast";
 class App {
   constructor(settings) {
     this.settings = settings || {};
+    this.settings.i18n = settings.i18n || {};
+    this.id =
+      "hoverBar-" +
+      Math.random()
+        .toString(36)
+        .substr(2);
     this.bar = document.createElement("div");
-    this.bar.innerHTML = `
-      <p>${this.settings.text}</p>
-    `;
+    this.bar.setAttribute("id", this.id);
+    this.bar.innerHTML = `<p class="hello-bar-text">${this.settings.text}</p>`;
+    if (!this.settings.hideClose) {
+      this.bar.innerHTML += `<button class="hello-bar-button" aria-controls="${
+        this.id
+      }" aria-expanded="true" aria-label="${this.settings.i18n.hideText ||
+        "Hide announcement"}">
+        <svg aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
+            <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+        </svg>
+      </button>`;
+    }
     this.bar.classList.add("hello-bar");
     if (this.settings.fixed) {
       this.bar.classList.add("hello-bar--is-fixed");
     }
     this.insertBar();
+    this.functionBar();
     this.colorizeBar();
     this.calculateHeight();
     this.moveElements(document.body);
@@ -25,6 +41,23 @@ class App {
     setTimeout(() => {
       this.bar.classList.add("hello-bar--is-visible");
     }, this.settings.delay || 1);
+  }
+
+  hideBar() {
+    this.bar.classList.remove("hello-bar--is-visible");
+    const movedElements = document.querySelectorAll(".hello-bar--has-moved");
+    for (let i = 0; i < movedElements.length; i++) {
+      const currentMargin = parseInt(movedElements[i].style.marginTop);
+      movedElements[i].style.marginTop = `${currentMargin - this.height}px`;
+    }
+  }
+
+  functionBar() {
+    if (document.querySelector(".hello-bar button.hello-bar-button")) {
+      document
+        .querySelector(".hello-bar button.hello-bar-button")
+        .addEventListener("click", () => this.hideBar());
+    }
   }
 
   colorizeBar() {
