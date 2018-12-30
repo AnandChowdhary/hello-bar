@@ -1,9 +1,9 @@
 /*!
  * 
- *   @hodgef/js-library-boilerplate v1.0.11
- *   https://github.com/hodgef/js-library-boilerplate
+ *   hello-bar v0.0.1
+ *   https://github.com/AnandChowdhary/hello-bar
  * 
- *   Copyright (c) Francisco Hodge (https://github.com/hodgef)
+ *   Copyright (c) Anand Chowdhary (https://github.com/AnandChowdhary)
  * 
  *   This source code is licensed under the MIT license found in the
  *   LICENSE file in the root directory of this source tree.
