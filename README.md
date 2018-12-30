@@ -9,6 +9,8 @@ This is an open-source alternate to the [Hello Bar](https://www.hellobar.com/) s
 
 [![NPM](https://nodei.co/npm/hello-bar.png)](https://nodei.co/npm/hello-bar/)
 
+![Hello Bar demo](https://raw.githubusercontent.com/AnandChowdhary/hello-bar/master/ezgif-2-d4d4c80c2710.gif)
+
 ## Usage
 
 ### Basic usage
