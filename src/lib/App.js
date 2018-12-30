@@ -3,7 +3,7 @@ import fontColorContrast from "font-color-contrast";
 
 class App {
   constructor(settings) {
-    settins = settings || {};
+    settings = settings || {};
     this.settings = settings;
     ["i18n"].forEach(category => {
       this.settings[category] = this.settings[category] || {};

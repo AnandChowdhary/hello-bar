@@ -1,6 +1,6 @@
 /*!
  *
- *   hello-bar v0.1.0
+ *   hello-bar v0.2.0
  *   https://github.com/AnandChowdhary/hello-bar
  *
  *   Copyright (c) Anand Chowdhary (https://github.com/AnandChowdhary)
@@ -142,12 +142,16 @@
       }
       var o = (function() {
         function App(t) {
+          var e = this;
           !(function(t, e) {
             if (!(t instanceof e))
               throw new TypeError("Cannot call a class as a function");
           })(this, App),
-            (this.settings = t || {}),
-            (this.settings.i18n = t.i18n || {}),
+            (t = t || {}),
+            (this.settings = t),
+            ["i18n"].forEach(function(t) {
+              e.settings[t] = e.settings[t] || {};
+            }),
             (this.id =
               "hoverBar-" +
               Math.random()
