@@ -3,8 +3,11 @@ import fontColorContrast from "font-color-contrast";
 
 class App {
   constructor(settings) {
-    this.settings = settings || {};
-    this.settings.i18n = settings.i18n || {};
+    settins = settings || {};
+    this.settings = settings;
+    ["i18n"].forEach(category => {
+      this.settings[category] = this.settings[category] || {};
+    });
     this.id =
       "hoverBar-" +
       Math.random()
