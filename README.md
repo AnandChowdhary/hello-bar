@@ -83,3 +83,4 @@ Acceptance `move` values:
 - [ ] Targetting features
 - [ ] Better design customization
 - [ ] Random from `text` array for A/B testing
+- [ ] ARIA for close button (?)
