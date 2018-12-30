@@ -82,3 +82,4 @@ Acceptance `move` values:
 ## Todo
 - [ ] Targetting features
 - [ ] Better design customization
+- [ ] Random from `text` array for A/B testing
