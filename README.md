@@ -8,3 +8,7 @@ This is an open-source alternate to the [Hello Bar](https://www.hellobar.com/) s
 [![Made in Enschede](https://img.shields.io/badge/made%20in-Enschede-brightgreen.svg)](https://cityofenschede.com/)
 
 [![NPM](https://nodei.co/npm/hello-bar.png)](https://nodei.co/npm/hello-bar/)
+
+## Todo
+- [ ] Targetting features
+- [ ] Better design customization
