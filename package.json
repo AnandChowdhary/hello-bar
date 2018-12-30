@@ -1,6 +1,6 @@
 {
   "name": "hello-bar",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "build/index.js",
   "scripts": {
     "start": "node scripts/start.js",
