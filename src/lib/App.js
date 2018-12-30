@@ -12,7 +12,9 @@ class App {
         .substr(2);
     this.bar = document.createElement("div");
     this.bar.setAttribute("id", this.id);
-    this.bar.innerHTML = `<p class="hello-bar-text">${this.settings.text}</p>`;
+    this.bar.innerHTML = `<div class="hello-bar-container"><p class="hello-bar-text">${
+      this.settings.text
+    }</p></div><div class="hello-bar-text--after"></div>`;
     if (!this.settings.hideClose) {
       this.bar.innerHTML += `<button class="hello-bar-button" aria-controls="${
         this.id
@@ -63,11 +65,13 @@ class App {
   colorizeBar() {
     const backgroundColor = this.settings.background || "#eeeeee";
     this.bar.style.backgroundColor = backgroundColor;
-    if (this.settings.textColor) {
-      this.bar.style.color = this.settings.textColor;
-    } else {
-      this.bar.style.color = fontColorContrast(backgroundColor);
-    }
+    if (document.querySelector(".hello-bar .hello-bar-text--after"))
+      document.querySelector(
+        ".hello-bar .hello-bar-text--after"
+      ).style.background = `linear-gradient(to right, rgba(0, 0, 0, 0), ${backgroundColor})`;
+    this.bar.style.color =
+      this.settings.textColor || fontColorContrast(backgroundColor);
+    this.bar.style.textAlign = this.settings.align || "center";
   }
 
   calculateHeight() {

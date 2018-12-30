@@ -6,6 +6,7 @@
     right: 0;
     top: 0;
     width: 100%;
+    z-index: 1000;
     transform: translateY(-100%);
     opacity: 0;
 }
@@ -15,11 +16,34 @@
     opacity: 1;
 }
 
+.hello-bar .hello-bar-container {
+    overflow-y: hidden;
+    margin-right: 1.5rem;
+    overflow-x: auto;
+}
+
 .hello-bar p.hello-bar-text {
     margin: 0;
     padding: 0.66rem;
+    text-align: inherit;
     max-width: 100%;
     line-height: 1;
+    white-space: nowrap;
+}
+.hello-bar p.hello-bar-text::before,
+.hello-bar p.hello-bar-text::after {
+    content: "";
+    display: inline-block;
+    background-color: red;
+    width: 2rem;
+}
+.hello-bar .hello-bar-text--after {
+    position: absolute;
+    right: 1rem;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    width: 3rem;
 }
 
 .hello-bar.hello-bar--is-fixed {
@@ -30,6 +54,7 @@
     position: absolute;
     right: 0;
     top: 50%;
+    z-index: 2;
     transform: translateY(-50%);
     line-height: 1;
     appearance: none;
