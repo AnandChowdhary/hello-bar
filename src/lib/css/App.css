@@ -31,20 +31,24 @@
     white-space: nowrap;
 }
 
-.hello-bar p.hello-bar-text button {
+.hello-bar p.hello-bar-text .cta {
+    text-decoration: none;
     appearance: none;
     background: none;
     display: inline-block;
+    vertical-align: middle;
     width: auto;
     border: none;
-    padding: 0 0.75rem;
+    padding: 0 1rem;
     margin-top: -0.66rem;
     margin-bottom: -0.66rem;
+    border: 0.3rem solid;
+    border-radius: 10rem;
     font: inherit;
     font-weight: bold;
     text-transform: uppercase;
     line-height: 1;
-    margin-left: 0.75rem;
+    margin-left: 0.5rem;
 }
 
 .hello-bar a {
@@ -85,8 +89,24 @@
     margin: 0;
     width: auto;
     color: inherit;
-    font-size: 150%;
 }
 .hello-bar button.hello-bar-button svg {
     height: 1rem;
+}
+
+.hello-bar.hello-bar--size-large {
+    font-size: 120%;
+}
+.hello-bar.hello-bar--size-large p.hello-bar-text {
+    padding: 1rem;
+}
+.hello-bar.hello-bar--size-large p.hello-bar-text .cta {
+    padding: 0 1.25rem;
+    margin-top: -1rem;
+    margin-bottom: -1rem;
+    border: 0.5rem solid;
+    margin-left: 0.5rem;
+}
+.hello-bar.hello-bar--size-large button.hello-bar-button svg {
+    height: 1.33rem;
 }

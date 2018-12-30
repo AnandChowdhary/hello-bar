@@ -72,20 +72,25 @@ class App {
     this.bar.style.color =
       this.settings.textColor || fontColorContrast(backgroundColor);
     this.bar.style.textAlign = this.settings.align || "center";
-    if (document.querySelector(".hello-bar p.hello-bar-text button")) {
+    if (document.querySelector(".hello-bar p.hello-bar-text .cta")) {
       document.querySelector(
-        ".hello-bar p.hello-bar-text button"
+        ".hello-bar p.hello-bar-text .cta"
       ).style.height = `${this.height}px`;
-      document.querySelector(".hello-bar p.hello-bar-text button").style.color =
+      document.querySelector(
+        ".hello-bar p.hello-bar-text .cta"
+      ).style.lineHeight = `${this.height}px`;
+      document.querySelector(".hello-bar p.hello-bar-text .cta").style.color =
         this.settings.background || "#eeeeee";
       document.querySelector(
-        ".hello-bar p.hello-bar-text button"
+        ".hello-bar p.hello-bar-text .cta"
       ).style.background =
         this.settings.textColor || fontColorContrast(backgroundColor);
     }
   }
 
   calculateHeight() {
+    if (this.settings.size)
+      this.bar.classList.add(`hello-bar--size-${this.settings.size}`);
     if (
       typeof this.bar.getBoundingClientRect === "function" &&
       this.bar.getBoundingClientRect().height
