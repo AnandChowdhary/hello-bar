@@ -177,7 +177,7 @@
             this.functionBar(),
             this.calculateHeight(),
             this.colorizeBar(),
-            this.moveElements(document.body),
+            this.settings.disableBodyMove || this.moveElements(document.body),
             this.moveElements(this.settings.move),
             this.showBar();
         }

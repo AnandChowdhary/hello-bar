@@ -36,7 +36,7 @@ class App {
     this.functionBar();
     this.calculateHeight();
     this.colorizeBar();
-    this.moveElements(document.body);
+    if (!this.settings.disableBodyMove) this.moveElements(document.body);
     this.moveElements(this.settings.move);
     this.showBar();
   }
