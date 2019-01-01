@@ -1,5 +1,6 @@
 import "./css/App.css";
 import fontColorContrast from "font-color-contrast";
+import cachedFetch from "./cachedFetch";
 
 class App {
   constructor(settings) {
@@ -153,6 +154,14 @@ class App {
         elements.classList.add("hello-bar--has-moved");
       }
     }
+  }
+
+  getIpInfo() {
+    return new Promise((resolve, reject) => {
+      cachedFetch("https://ipinfo.io/json")
+        .then(json => resolve(json))
+        .catch(error => reject(error));
+    });
   }
 }
 
