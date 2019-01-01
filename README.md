@@ -85,5 +85,7 @@ Acceptance `move` values:
 - etc.
 
 ## Todo
-- [ ] Targetting features
+- [ ] Targetting features (single: true)
 - [ ] Better design customization
+- [ ] Random from `text` array for A/B testing
+- [ ] ARIA for close button (?)
