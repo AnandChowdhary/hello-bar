@@ -50,6 +50,7 @@ These are the default values, and you can customize them to the values in commen
 new HelloBar({
   text: "", // Text you want the banner to display
   hideClose: false, // Set to `true` to hide close button
+  position: "top", // Set to "bottom" to have the bar in the bottom instead of top
   fixed: false, // Set to `true` to set the position as fixed (on scroll)
   move: null, // Element(s) to force add margin-top to, in case you have any absolutely positioned elements
   duration: 500, // Animation duration in miliseconds
@@ -106,7 +107,8 @@ You can show a cookie law message only in the European Union (EU) using somethin
 ```js
 new HelloBar({
   text: '🍪 We use cookies and storage on our website. <a class="cta" href="/privacy-policy">Privacy policy</a>',
-  fixed: true, // Position fixed for this message
+  fixed: true, // Position fixed for this message,
+  position: "bottom",
   targeting: {
     onceUser: true,
     location: {
@@ -125,6 +127,7 @@ You can show a welcome message to users coming from your Product Hunt page:
 ```js
 new HelloBar({
   text: 'Hello Product Hunter! Use code PH20 for 20% off when you sign up!',
+  background: "#dc542f",
   targeting: {
     params: {
       ref: "producthunt"
