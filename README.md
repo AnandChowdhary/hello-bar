@@ -3,7 +3,8 @@
 This is an open-source alternate to the [Hello Bar](https://www.hellobar.com/) service. It's a great way to capture leads, announce a sale or discount, etc.
 
 
-![Travis (.org)](https://travis-ci.org/AnandChowdhary/hello-bar.svg?branch=master)
+[![](https://img.shields.io/travis/AnandChowdhary/hello-bar.svg)](https://travis-ci.org/AnandChowdhary/hello-bar)
+[![](https://img.shields.io/bundlephobia/minzip/hello-bar.svg)](https://www.npmjs.com/package/hello-bar)
 [![GitHub](https://img.shields.io/github/license/anandchowdhary/hello-bar.svg)](https://github.com/AnandChowdhary/add-to-calendar/blob/master/LICENSE)
 [![Made in Enschede](https://img.shields.io/badge/made%20in-Enschede-brightgreen.svg)](https://cityofenschede.com/)
 
@@ -66,6 +67,9 @@ new HelloBar({
   targeting: {
     once: false, // Set to true to not show after it's been closed in this session
     onceUser: false, // Set to true to not show after it's been closed by this user EVER,
+    params: { // Support for URL param targeting
+      // Add key-value pairs here
+    },
     location: { // Add targeting by location
       eu: false, // Set to true to only show in EU countries
       country: null // Add array of countries to show in,
@@ -102,6 +106,7 @@ You can show a cookie law message only in the European Union (EU) using somethin
 ```js
 new HelloBar({
   text: '🍪 We use cookies and storage on our website. <a class="cta" href="/privacy-policy">Privacy policy</a>',
+  fixed: true, // Position fixed for this message
   targeting: {
     onceUser: true,
     location: {
@@ -112,6 +117,21 @@ new HelloBar({
 ```
 
 In the code above, setting `targeting.onceUser` will make sure that a user doesn't see the message again after they've closed it. Using `targeting.location.eu` will restrict message visibility within the EU member countries.
+
+### Product Hunt message
+
+You can show a welcome message to users coming from your Product Hunt page:
+
+```js
+new HelloBar({
+  text: 'Hello Product Hunter! Use code PH20 for 20% off when you sign up!',
+  targeting: {
+    params: {
+      ref: "producthunt"
+    }
+  }
+});
+```
 
 ## Todo
 - [ ] Targetting features (single: true)

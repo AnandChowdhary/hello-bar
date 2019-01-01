@@ -2,6 +2,7 @@ import "./css/App.css";
 import fontColorContrast from "font-color-contrast";
 import cachedFetch from "./cachedFetch";
 import euCountries from "./euCountries";
+import getParameterByName from "./getParameterByName";
 
 class App {
   constructor(settings) {
@@ -11,6 +12,7 @@ class App {
       this.settings[category] = this.settings[category] || {};
     });
     this.settings.targeting.location = this.settings.targeting.location || {};
+    this.settings.targeting.params = this.settings.targeting.params || {};
     this.id =
       "hoverBar-" +
       Math.random()
@@ -50,6 +52,26 @@ class App {
 
   confirmShow() {
     return new Promise((resolve, reject) => {
+      const finishConfirmation = () => {
+        if (this.settings.targeting.once) {
+          if (sessionStorage.getItem("hello-bar--session-showed"))
+            return reject();
+        }
+        if (this.settings.targeting.onceUser) {
+          if (localStorage.getItem("hello-bar--user-showed")) return reject();
+        }
+        if (this.settings.targeting.params) {
+          Object.keys(this.settings.targeting.params).forEach(param => {
+            const paramValue = getParameterByName(param);
+            if (
+              paramValue &&
+              paramValue !== this.settings.targeting.params[param]
+            )
+              return reject();
+          });
+        }
+        resolve();
+      };
       if (this.settings.hide) return reject();
       if (this.settings.targeting.location) {
         this.getIpInfo().then(geolocation => {
@@ -72,16 +94,10 @@ class App {
               }
             }
           );
-          resolve();
+          finishConfirmation();
         });
       } else {
-        if (this.settings.targeting.once) {
-          if (sessionStorage.getItem("hello-bar--session-showed"))
-            return reject();
-        } else if (this.settings.targeting.onceUser) {
-          if (localStorage.getItem("hello-bar--user-showed")) return reject();
-        }
-        resolve();
+        finishConfirmation();
       }
     });
   }
