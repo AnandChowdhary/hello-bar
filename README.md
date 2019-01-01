@@ -178,3 +178,7 @@ You can listen to the following events. They all return the relevant DOM element
 - [x] Random from `text` array for A/B testing
 - [ ] Revisit ARIA for close button (?)
 - [x] Emit events for hello bar showed, closed, cta hover, etc.
+
+## License
+
+MIT
