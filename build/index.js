@@ -1,6 +1,6 @@
 /*!
  *
- *   hello-bar v0.6.0
+ *   hello-bar v0.7.0
  *   https://github.com/AnandChowdhary/hello-bar
  *
  *   Copyright (c) Anand Chowdhary (https://github.com/AnandChowdhary)
@@ -20,21 +20,21 @@
 })(window, function() {
   return (function(t) {
     var e = {};
-    function __webpack_require__(r) {
-      if (e[r]) return e[r].exports;
-      var o = (e[r] = { i: r, l: !1, exports: {} });
+    function __webpack_require__(n) {
+      if (e[n]) return e[n].exports;
+      var r = (e[n] = { i: n, l: !1, exports: {} });
       return (
-        t[r].call(o.exports, o, o.exports, __webpack_require__),
-        (o.l = !0),
-        o.exports
+        t[n].call(r.exports, r, r.exports, __webpack_require__),
+        (r.l = !0),
+        r.exports
       );
     }
     return (
       (__webpack_require__.m = t),
       (__webpack_require__.c = e),
-      (__webpack_require__.d = function(t, e, r) {
+      (__webpack_require__.d = function(t, e, n) {
         __webpack_require__.o(t, e) ||
-          Object.defineProperty(t, e, { enumerable: !0, get: r });
+          Object.defineProperty(t, e, { enumerable: !0, get: n });
       }),
       (__webpack_require__.r = function(t) {
         "undefined" !== typeof Symbol &&
@@ -45,21 +45,21 @@
       (__webpack_require__.t = function(t, e) {
         if ((1 & e && (t = __webpack_require__(t)), 8 & e)) return t;
         if (4 & e && "object" === typeof t && t && t.__esModule) return t;
-        var r = Object.create(null);
+        var n = Object.create(null);
         if (
-          (__webpack_require__.r(r),
-          Object.defineProperty(r, "default", { enumerable: !0, value: t }),
+          (__webpack_require__.r(n),
+          Object.defineProperty(n, "default", { enumerable: !0, value: t }),
           2 & e && "string" != typeof t)
         )
-          for (var o in t)
+          for (var r in t)
             __webpack_require__.d(
+              n,
               r,
-              o,
               function(e) {
                 return t[e];
-              }.bind(null, o)
+              }.bind(null, r)
             );
-        return r;
+        return n;
       }),
       (__webpack_require__.n = function(t) {
         var e =
@@ -80,42 +80,72 @@
     );
   })([
     function(t, e) {
-      t.exports = function(t, e, o) {
+      t.exports = function(t, e, r) {
         var i = /#/.test(t),
-          n = void 0 !== e && void 0 !== o,
-          s = Array.isArray(t),
-          a = "#ffffff",
+          o = void 0 !== e && void 0 !== r,
+          a = Array.isArray(t),
+          s = "#ffffff",
           c = 0;
         if (i)
-          (c = r(t.substr(1, 2))),
-            (e = r(t.substr(3, 2))),
-            (o = r(t.substr(5, 2)));
-        else if (n) (c = parseInt(t)), (e = parseInt(e)), (o = parseInt(o));
+          (c = n(t.substr(1, 2))),
+            (e = n(t.substr(3, 2))),
+            (r = n(t.substr(5, 2)));
+        else if (o) (c = parseInt(t)), (e = parseInt(e)), (r = parseInt(r));
         else {
-          if (!s) return a;
-          (c = parseInt(t[0])), (e = parseInt(t[1])), (o = parseInt(t[2]));
+          if (!a) return s;
+          (c = parseInt(t[0])), (e = parseInt(t[1])), (r = parseInt(t[2]));
         }
         return (
-          Math.sqrt(c * c * 0.241 + e * e * 0.691 + o * o * 0.068) > 130 &&
-            (a = "#000000"),
-          a
+          Math.sqrt(c * c * 0.241 + e * e * 0.691 + r * r * 0.068) > 130 &&
+            (s = "#000000"),
+          s
         );
       };
-      var r = function(t) {
+      var n = function(t) {
         var e = t.replace(/[^a-f0-9]/gi, "");
         return parseInt(e, 16);
       };
     },
-    function(t, e, r) {
-      t.exports = r(3);
+    function(t, e, n) {
+      t.exports = n(3);
     },
-    function(t, e, r) {},
-    function(t, e, r) {
+    function(t, e, n) {},
+    function(t, e, n) {
       "use strict";
-      r.r(e);
-      r(2);
-      var o = r(0),
-        i = r.n(o);
+      n.r(e);
+      n(2);
+      var r = n(0),
+        i = n.n(r),
+        o = [
+          "BE",
+          "BG",
+          "CZ",
+          "DK",
+          "DE",
+          "EE",
+          "IE",
+          "EL",
+          "ES",
+          "FR",
+          "HR",
+          "IT",
+          "CY",
+          "LV",
+          "LT",
+          "LU",
+          "HU",
+          "MT",
+          "NL",
+          "AT",
+          "PL",
+          "PT",
+          "RO",
+          "SI",
+          "SK",
+          "FI",
+          "SE",
+          "UK"
+        ];
       function _typeof(t) {
         return (_typeof =
           "function" === typeof Symbol && "symbol" === typeof Symbol.iterator
@@ -132,15 +162,15 @@
               })(t);
       }
       function _defineProperties(t, e) {
-        for (var r = 0; r < e.length; r++) {
-          var o = e[r];
-          (o.enumerable = o.enumerable || !1),
-            (o.configurable = !0),
-            "value" in o && (o.writable = !0),
-            Object.defineProperty(t, o.key, o);
+        for (var n = 0; n < e.length; n++) {
+          var r = e[n];
+          (r.enumerable = r.enumerable || !1),
+            (r.configurable = !0),
+            "value" in r && (r.writable = !0),
+            Object.defineProperty(t, r.key, r);
         }
       }
-      var n = (function() {
+      var a = (function() {
         function App(t) {
           var e = this;
           !(function(t, e) {
@@ -152,6 +182,8 @@
             ["i18n", "targeting"].forEach(function(t) {
               e.settings[t] = e.settings[t] || {};
             }),
+            (this.settings.targeting.location =
+              this.settings.targeting.location || {}),
             (this.id =
               "hoverBar-" +
               Math.random()
@@ -173,31 +205,60 @@
             this.bar.classList.add("hello-bar"),
             this.settings.fixed &&
               this.bar.classList.add("hello-bar--is-fixed"),
-            this.confirmShow(),
-            this.show &&
-              (this.insertBar(),
-              this.functionBar(),
-              this.calculateHeight(),
-              this.colorizeBar(),
-              this.settings.disableBodyMove || this.moveElements(document.body),
-              this.moveElements(this.settings.move),
-              this.showBar());
+            this.confirmShow()
+              .then(function() {
+                e.insertBar(),
+                  e.functionBar(),
+                  e.calculateHeight(),
+                  e.colorizeBar(),
+                  e.settings.disableBodyMove || e.moveElements(document.body),
+                  e.moveElements(e.settings.move),
+                  e.showBar();
+              })
+              .catch(function() {});
         }
-        var t, e, r;
+        var t, e, n;
         return (
           (t = App),
           (e = [
             {
               key: "confirmShow",
               value: function() {
-                (this.show = !this.settings.hide),
-                  this.show &&
-                    (this.settings.targeting.once
-                      ? sessionStorage.getItem("hello-bar-session-showed") &&
-                        (this.show = !1)
-                      : this.settings.targeting.onceUser &&
-                        localStorage.getItem("hello-bar-user-showed") &&
-                        (this.show = !1));
+                var t = this;
+                return new Promise(function(e, n) {
+                  if (t.settings.hide) return n();
+                  if (t.settings.targeting.location)
+                    t.getIpInfo().then(function(r) {
+                      if (
+                        t.settings.targeting.location.eu &&
+                        !o.includes(r.country)
+                      )
+                        return n();
+                      ["country", "city", "ip", "postal", "region"].forEach(
+                        function(e) {
+                          if (
+                            t.settings.targeting.location[e] &&
+                            t.settings.targeting.location[e].constructor ===
+                              Array &&
+                            !t.settings.targeting.location[e].includes(r[e])
+                          )
+                            return n();
+                        }
+                      ),
+                        e();
+                    });
+                  else {
+                    if (t.settings.targeting.once) {
+                      if (sessionStorage.getItem("hello-bar--session-showed"))
+                        return n();
+                    } else if (
+                      t.settings.targeting.onceUser &&
+                      localStorage.getItem("hello-bar--user-showed")
+                    )
+                      return n();
+                    e();
+                  }
+                });
               }
             },
             {
@@ -218,17 +279,17 @@
                 var t = this;
                 if (document.querySelector("#".concat(this.id))) {
                   this.bar.classList.remove("hello-bar--is-visible"),
-                    sessionStorage.setItem("hello-bar-session-showed", !0),
-                    localStorage.setItem("hello-bar-user-showed", !0);
+                    sessionStorage.setItem("hello-bar--session-showed", !0),
+                    localStorage.setItem("hello-bar--user-showed", !0);
                   for (
                     var e = document.querySelectorAll(".hello-bar--has-moved"),
-                      r = 0;
-                    r < e.length;
-                    r++
+                      n = 0;
+                    n < e.length;
+                    n++
                   ) {
-                    var o = parseInt(e[r].style.marginTop);
-                    (e[r].style.marginTop = "".concat(o - this.height, "px")),
-                      e[r].classList.remove("hello-bar--has-moved");
+                    var r = parseInt(e[n].style.marginTop);
+                    (e[n].style.marginTop = "".concat(r - this.height, "px")),
+                      e[n].classList.remove("hello-bar--has-moved");
                   }
                   setTimeout(function() {
                     t.bar.parentNode.removeChild(t.bar);
@@ -314,13 +375,13 @@
                 if (t)
                   if ("string" === typeof t)
                     for (
-                      var e = document.querySelectorAll(t), r = 0;
-                      r < e.length;
-                      r++
+                      var e = document.querySelectorAll(t), n = 0;
+                      n < e.length;
+                      n++
                     )
-                      this.moveElements(e[r]);
+                      this.moveElements(e[n]);
                   else if (t.constructor === Array && t.length)
-                    for (var o = 0; o < t.length; o++) this.moveElements(t[o]);
+                    for (var r = 0; r < t.length; r++) this.moveElements(t[r]);
                   else if (
                     "object" === _typeof(t) &&
                     "object" === _typeof(t.classList) &&
@@ -341,26 +402,27 @@
             {
               key: "getIpInfo",
               value: function() {
-                return new Promise(function(t, e) {
-                  var r, o;
-                  ((r = "https://ipinfo.io/json"),
+                var t = this;
+                return new Promise(function(e, n) {
+                  var r, i;
+                  ((r = t.settings.ipEndpoint || "https://ipinfo.io/json"),
                   new Promise(function(t, e) {
-                    var i = "hello_bar_cache_"
+                    var n = "hello_bar_cache_"
                       .concat(r)
-                      .concat(o ? "_" + JSON.stringify(o) : "");
-                    if (localStorage.getItem(i))
+                      .concat(i ? "_" + JSON.stringify(i) : "");
+                    if (localStorage.getItem(n))
                       try {
-                        var n = JSON.parse(localStorage.getItem(i));
-                        if (n.expires_at > new Date().getTime())
-                          return t(n.cache_value);
-                      } catch (s) {}
-                    fetch(r, o)
+                        var o = JSON.parse(localStorage.getItem(n));
+                        if (o.expires_at > new Date().getTime())
+                          return t(o.cache_value);
+                      } catch (a) {}
+                    fetch(r, i)
                       .then(function(t) {
                         return t.json();
                       })
                       .then(function(e) {
                         localStorage.setItem(
-                          i,
+                          n,
                           JSON.stringify({
                             created_at: new Date().getTime(),
                             expires_at: new Date().getTime() + 6048e5,
@@ -373,21 +435,21 @@
                         return e(t);
                       });
                   }))
-                    .then(function(e) {
-                      return t(e);
+                    .then(function(t) {
+                      return e(t);
                     })
                     .catch(function(t) {
-                      return e(t);
+                      return n(t);
                     });
                 });
               }
             }
           ]) && _defineProperties(t.prototype, e),
-          r && _defineProperties(t, r),
+          n && _defineProperties(t, n),
           App
         );
       })();
-      e.default = n;
+      e.default = a;
     }
   ]);
 });

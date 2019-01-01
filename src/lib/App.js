@@ -10,6 +10,7 @@ class App {
     ["i18n", "targeting"].forEach(category => {
       this.settings[category] = this.settings[category] || {};
     });
+    this.settings.targeting.location = this.settings.targeting.location || {};
     this.id =
       "hoverBar-" +
       Math.random()
@@ -50,26 +51,20 @@ class App {
   confirmShow() {
     return new Promise((resolve, reject) => {
       if (this.settings.hide) return reject();
-      if (
-        this.settings.targeting.eu ||
-        this.settings.targeting.country ||
-        this.settings.targeting.city ||
-        this.settings.targeting.ip ||
-        this.settings.targeting.postal ||
-        this.settings.targeting.region
-      ) {
+      if (this.settings.targeting.location) {
         this.getIpInfo().then(geolocation => {
-          if (this.settings.targeting.eu) {
+          if (this.settings.targeting.location.eu) {
             if (!euCountries.includes(geolocation.country)) return reject();
           }
           ["country", "city", "ip", "postal", "region"].forEach(
             targetOptions => {
               if (
-                this.settings.targeting[targetOptions] &&
-                this.settings.targeting[targetOptions].constructor === Array
+                this.settings.targeting.location[targetOptions] &&
+                this.settings.targeting.location[targetOptions].constructor ===
+                  Array
               ) {
                 if (
-                  !this.settings.targeting[targetOptions].includes(
+                  !this.settings.targeting.location[targetOptions].includes(
                     geolocation[targetOptions]
                   )
                 )
@@ -209,7 +204,7 @@ class App {
 
   getIpInfo() {
     return new Promise((resolve, reject) => {
-      cachedFetch("https://ipinfo.io/json")
+      cachedFetch(this.settings.ipEndpoint || "https://ipinfo.io/json")
         .then(json => resolve(json))
         .catch(error => reject(error));
     });

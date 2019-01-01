@@ -4,7 +4,14 @@ body {
 }
 h1 {
   font-weight: 300;
-  margin: 40vh 0;
+  margin-top: 30vh;
+  margin-bottom: 5vh;
+}
+.options {
+  margin-bottom: 20vh;
+}
+.options div {
+  margin-bottom: 1rem;
 }
 p {
   max-width: 400px;

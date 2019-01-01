@@ -59,12 +59,21 @@ new HelloBar({
   size: "normal", // Set to "large" for a big banner like Hello Bar,
   disableBodyMove: false, // Set to true to not move the body slightly down,
   hide: false, // Set to true to not show the bar
+  ipEndpoint: "https://ipinfo.io/json", // Endpoint to get IP info in case of location-based targeting
   i18n: {
     hideText: "Hide announcement" // ARIA-label for close button
   },
   targeting: {
     once: false, // Set to true to not show after it's been closed in this session
-    onceUser: false, // Set to true to not show after it's been closed by this user EVER
+    onceUser: false, // Set to true to not show after it's been closed by this user EVER,
+    location: { // Add targeting by location
+      eu: false, // Set to true to only show in EU countries
+      country: null // Add array of countries to show in,
+      city: null // Add array of cities to show in,
+      ip: null // Add array of IP addresses to show in,
+      postal: null // Add array of postal codes to show in,
+      region: null // Add array of regions to show in
+    }
   }
 });
 ```
@@ -83,6 +92,26 @@ Acceptance `move` values:
 - Array containing selectors: `["h1", "div.move"]`
 - Hybrid array: `["h1", document.querySelectorAll("h2"), document.querySelector("#divId")]`
 - etc.
+
+## Use cases
+
+### EU cookie law message
+
+You can show a cookie law message only in the European Union (EU) using something like this:
+
+```js
+new HelloBar({
+  text: '🍪 We use cookies and storage on our website. <a class="cta" href="/privacy-policy">Privacy policy</a>',
+  targeting: {
+    onceUser: true,
+    location: {
+      eu: true
+    }
+  }
+});
+```
+
+In the code above, setting `targeting.onceUser` will make sure that a user doesn't see the message again after they've closed it. Using `targeting.location.eu` will restrict message visibility within the EU member countries.
 
 ## Todo
 - [ ] Targetting features (single: true)

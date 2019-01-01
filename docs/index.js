@@ -1,14 +1,14 @@
 !(function(t) {
   var e = {};
-  function n(o) {
-    if (e[o]) return e[o].exports;
-    var i = (e[o] = { i: o, l: !1, exports: {} });
-    return t[o].call(i.exports, i, i.exports, n), (i.l = !0), i.exports;
+  function n(i) {
+    if (e[i]) return e[i].exports;
+    var o = (e[i] = { i: i, l: !1, exports: {} });
+    return t[i].call(o.exports, o, o.exports, n), (o.l = !0), o.exports;
   }
   (n.m = t),
     (n.c = e),
-    (n.d = function(t, e, o) {
-      n.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: o });
+    (n.d = function(t, e, i) {
+      n.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: i });
     }),
     (n.r = function(t) {
       "undefined" !== typeof Symbol &&
@@ -19,21 +19,21 @@
     (n.t = function(t, e) {
       if ((1 & e && (t = n(t)), 8 & e)) return t;
       if (4 & e && "object" === typeof t && t && t.__esModule) return t;
-      var o = Object.create(null);
+      var i = Object.create(null);
       if (
-        (n.r(o),
-        Object.defineProperty(o, "default", { enumerable: !0, value: t }),
+        (n.r(i),
+        Object.defineProperty(i, "default", { enumerable: !0, value: t }),
         2 & e && "string" != typeof t)
       )
-        for (var i in t)
+        for (var o in t)
           n.d(
-            o,
             i,
+            o,
             function(e) {
               return t[e];
-            }.bind(null, i)
+            }.bind(null, o)
           );
-      return o;
+      return i;
     }),
     (n.n = function(t) {
       var e =
@@ -53,25 +53,25 @@
     n((n.s = 1));
 })([
   function(t, e) {
-    t.exports = function(t, e, o) {
-      var i = /#/.test(t),
-        r = void 0 !== e && void 0 !== o,
-        s = Array.isArray(t),
-        a = "#ffffff",
+    t.exports = function(t, e, i) {
+      var o = /#/.test(t),
+        r = void 0 !== e && void 0 !== i,
+        a = Array.isArray(t),
+        s = "#ffffff",
         c = 0;
-      if (i)
+      if (o)
         (c = n(t.substr(1, 2))),
           (e = n(t.substr(3, 2))),
-          (o = n(t.substr(5, 2)));
-      else if (r) (c = parseInt(t)), (e = parseInt(e)), (o = parseInt(o));
+          (i = n(t.substr(5, 2)));
+      else if (r) (c = parseInt(t)), (e = parseInt(e)), (i = parseInt(i));
       else {
-        if (!s) return a;
-        (c = parseInt(t[0])), (e = parseInt(t[1])), (o = parseInt(t[2]));
+        if (!a) return s;
+        (c = parseInt(t[0])), (e = parseInt(t[1])), (i = parseInt(t[2]));
       }
       return (
-        Math.sqrt(c * c * 0.241 + e * e * 0.691 + o * o * 0.068) > 130 &&
-          (a = "#000000"),
-        a
+        Math.sqrt(c * c * 0.241 + e * e * 0.691 + i * i * 0.068) > 130 &&
+          (s = "#000000"),
+        s
       );
     };
     var n = function(t) {
@@ -88,10 +88,40 @@
     "use strict";
     n.r(e);
     n(2), n(3);
-    var o = n(0),
-      i = n.n(o);
-    function r(t) {
-      return (r =
+    var i = n(0),
+      o = n.n(i),
+      r = [
+        "BE",
+        "BG",
+        "CZ",
+        "DK",
+        "DE",
+        "EE",
+        "IE",
+        "EL",
+        "ES",
+        "FR",
+        "HR",
+        "IT",
+        "CY",
+        "LV",
+        "LT",
+        "LU",
+        "HU",
+        "MT",
+        "NL",
+        "AT",
+        "PL",
+        "PT",
+        "RO",
+        "SI",
+        "SK",
+        "FI",
+        "SE",
+        "UK"
+      ];
+    function a(t) {
+      return (a =
         "function" === typeof Symbol && "symbol" === typeof Symbol.iterator
           ? function(t) {
               return typeof t;
@@ -107,14 +137,14 @@
     }
     function s(t, e) {
       for (var n = 0; n < e.length; n++) {
-        var o = e[n];
-        (o.enumerable = o.enumerable || !1),
-          (o.configurable = !0),
-          "value" in o && (o.writable = !0),
-          Object.defineProperty(t, o.key, o);
+        var i = e[n];
+        (i.enumerable = i.enumerable || !1),
+          (i.configurable = !0),
+          "value" in i && (i.writable = !0),
+          Object.defineProperty(t, i.key, i);
       }
     }
-    var a = (function() {
+    var c = (function() {
       function t(e) {
         var n = this;
         !(function(t, e) {
@@ -126,6 +156,8 @@
           ["i18n", "targeting"].forEach(function(t) {
             n.settings[t] = n.settings[t] || {};
           }),
+          (this.settings.targeting.location =
+            this.settings.targeting.location || {}),
           (this.id =
             "hoverBar-" +
             Math.random()
@@ -146,31 +178,60 @@
               )),
           this.bar.classList.add("hello-bar"),
           this.settings.fixed && this.bar.classList.add("hello-bar--is-fixed"),
-          this.confirmShow(),
-          this.show &&
-            (this.insertBar(),
-            this.functionBar(),
-            this.calculateHeight(),
-            this.colorizeBar(),
-            this.settings.disableBodyMove || this.moveElements(document.body),
-            this.moveElements(this.settings.move),
-            this.showBar());
+          this.confirmShow()
+            .then(function() {
+              n.insertBar(),
+                n.functionBar(),
+                n.calculateHeight(),
+                n.colorizeBar(),
+                n.settings.disableBodyMove || n.moveElements(document.body),
+                n.moveElements(n.settings.move),
+                n.showBar();
+            })
+            .catch(function() {});
       }
-      var e, n, o;
+      var e, n, i;
       return (
         (e = t),
         (n = [
           {
             key: "confirmShow",
             value: function() {
-              (this.show = !this.settings.hide),
-                this.show &&
-                  (this.settings.targeting.once
-                    ? sessionStorage.getItem("hello-bar-session-showed") &&
-                      (this.show = !1)
-                    : this.settings.targeting.onceUser &&
-                      localStorage.getItem("hello-bar-user-showed") &&
-                      (this.show = !1));
+              var t = this;
+              return new Promise(function(e, n) {
+                if (t.settings.hide) return n();
+                if (t.settings.targeting.location)
+                  t.getIpInfo().then(function(i) {
+                    if (
+                      t.settings.targeting.location.eu &&
+                      !r.includes(i.country)
+                    )
+                      return n();
+                    ["country", "city", "ip", "postal", "region"].forEach(
+                      function(e) {
+                        if (
+                          t.settings.targeting.location[e] &&
+                          t.settings.targeting.location[e].constructor ===
+                            Array &&
+                          !t.settings.targeting.location[e].includes(i[e])
+                        )
+                          return n();
+                      }
+                    ),
+                      e();
+                  });
+                else {
+                  if (t.settings.targeting.once) {
+                    if (sessionStorage.getItem("hello-bar--session-showed"))
+                      return n();
+                  } else if (
+                    t.settings.targeting.onceUser &&
+                    localStorage.getItem("hello-bar--user-showed")
+                  )
+                    return n();
+                  e();
+                }
+              });
             }
           },
           {
@@ -191,16 +252,16 @@
               var t = this;
               if (document.querySelector("#".concat(this.id))) {
                 this.bar.classList.remove("hello-bar--is-visible"),
-                  sessionStorage.setItem("hello-bar-session-showed", !0),
-                  localStorage.setItem("hello-bar-user-showed", !0);
+                  sessionStorage.setItem("hello-bar--session-showed", !0),
+                  localStorage.setItem("hello-bar--user-showed", !0);
                 for (
                   var e = document.querySelectorAll(".hello-bar--has-moved"),
                     n = 0;
                   n < e.length;
                   n++
                 ) {
-                  var o = parseInt(e[n].style.marginTop);
-                  (e[n].style.marginTop = "".concat(o - this.height, "px")),
+                  var i = parseInt(e[n].style.marginTop);
+                  (e[n].style.marginTop = "".concat(i - this.height, "px")),
                     e[n].classList.remove("hello-bar--has-moved");
                 }
                 setTimeout(function() {
@@ -234,7 +295,7 @@
                       t,
                       ")"
                     )),
-                  (this.bar.style.color = this.settings.textColor || i()(t)),
+                  (this.bar.style.color = this.settings.textColor || o()(t)),
                   (this.bar.style.textAlign = this.settings.align || "center"),
                   document.querySelector(".hello-bar p.hello-bar-text .cta") &&
                     ((document.querySelector(
@@ -248,7 +309,7 @@
                     ).style.color = this.settings.background || "#eeeeee"),
                     (document.querySelector(
                       ".hello-bar p.hello-bar-text .cta"
-                    ).style.background = this.settings.textColor || i()(t)));
+                    ).style.background = this.settings.textColor || o()(t)));
               }
             }
           },
@@ -288,17 +349,17 @@
                   )
                     this.moveElements(e[n]);
                 else if (t.constructor === Array && t.length)
-                  for (var o = 0; o < t.length; o++) this.moveElements(t[o]);
+                  for (var i = 0; i < t.length; i++) this.moveElements(t[i]);
                 else if (
-                  "object" === r(t) &&
-                  "object" === r(t.classList) &&
+                  "object" === a(t) &&
+                  "object" === a(t.classList) &&
                   "function" === typeof t.classList.add &&
                   !t.classList.contains("hello-bar--has-moved")
                 ) {
-                  var i = t.currentStyle || window.getComputedStyle(t);
-                  "object" === r(i) && i.marginTop
+                  var o = t.currentStyle || window.getComputedStyle(t);
+                  "object" === a(o) && o.marginTop
                     ? (t.style.marginTop = "".concat(
-                        parseInt(i.marginTop) + this.height,
+                        parseInt(o.marginTop) + this.height,
                         "px"
                       ))
                     : (t.style.marginTop = "".concat(this.height, "px")),
@@ -309,26 +370,27 @@
           {
             key: "getIpInfo",
             value: function() {
-              return new Promise(function(t, e) {
-                var n, o;
-                ((n = "https://ipinfo.io/json"),
+              var t = this;
+              return new Promise(function(e, n) {
+                var i, o;
+                ((i = t.settings.ipEndpoint || "https://ipinfo.io/json"),
                 new Promise(function(t, e) {
-                  var i = "hello_bar_cache_"
-                    .concat(n)
+                  var n = "hello_bar_cache_"
+                    .concat(i)
                     .concat(o ? "_" + JSON.stringify(o) : "");
-                  if (localStorage.getItem(i))
+                  if (localStorage.getItem(n))
                     try {
-                      var r = JSON.parse(localStorage.getItem(i));
+                      var r = JSON.parse(localStorage.getItem(n));
                       if (r.expires_at > new Date().getTime())
                         return t(r.cache_value);
-                    } catch (s) {}
-                  fetch(n, o)
+                    } catch (a) {}
+                  fetch(i, o)
                     .then(function(t) {
                       return t.json();
                     })
                     .then(function(e) {
                       localStorage.setItem(
-                        i,
+                        n,
                         JSON.stringify({
                           created_at: new Date().getTime(),
                           expires_at: new Date().getTime() + 6048e5,
@@ -341,34 +403,71 @@
                       return e(t);
                     });
                 }))
-                  .then(function(e) {
-                    return t(e);
+                  .then(function(t) {
+                    return e(t);
                   })
                   .catch(function(t) {
-                    return e(t);
+                    return n(t);
                   });
               });
             }
           }
         ]) && s(e.prototype, n),
-        o && s(e, o),
+        i && s(e, i),
         t
       );
     })();
+    var l =
+        "Check out this repository on GitHub now! <a class='cta wiggle' href='https://github.com/AnandChowdhary/hello-bar'>\u2b50 Star now</a>",
+      u =
+        "\ud83c\udf6a This website uses cookies to make your experience better. <a class='cta' href='#'>Cookie policy</a>";
     new function t() {
+      var e = this;
       !(function(t, e) {
         if (!(t instanceof e))
           throw new TypeError("Cannot call a class as a function");
-      })(this, t);
-      var e = new a({
-        text:
-          "Welcome to this website! How are you doing today? This is great, <a href='https://github.com/AnandChowdhary/hello-bar'>isn't it</a>? <a class='cta wiggle' href='https://github.com/AnandChowdhary/hello-bar'>\u2b50 Star now</a>",
-        background: "#5352ed",
-        size: "large",
-        delay: 500,
-        targeting: {}
-      });
-      console.log("Demo loaded!", e);
+      })(this, t),
+        (this.libInstance = new c({
+          text: l,
+          background: "#5352ed",
+          size: "large",
+          delay: 500
+        })),
+        console.log("Demo loaded!", this.libInstance);
+      for (
+        var n = document.querySelectorAll("input[type='radio']"),
+          i = function(t) {
+            n[t].addEventListener("change", function() {
+              switch ((e.libInstance.hideBar(), n[t].value)) {
+                case "cookie-law-1":
+                  setTimeout(function() {
+                    e.libInstance = new c({ text: u });
+                  }, 600);
+                  break;
+                case "cookie-law-2":
+                  setTimeout(function() {
+                    e.libInstance = new c({
+                      text: u,
+                      targeting: { location: { eu: !0 } }
+                    });
+                  }, 600);
+                  break;
+                default:
+                  setTimeout(function() {
+                    e.libInstance = new c({
+                      text: l,
+                      background: "#5352ed",
+                      size: "large"
+                    });
+                  }, 600);
+              }
+            });
+          },
+          o = 0;
+        o < n.length;
+        o++
+      )
+        i(o);
     }();
   }
 ]);
