@@ -20,8 +20,15 @@ class App {
         .substr(2);
     this.bar = document.createElement("div");
     this.bar.setAttribute("id", this.id);
+    if (typeof this.settings.text === "object") {
+      this.text = this.settings.text[
+        Math.floor(Math.random() * this.settings.text.length)
+      ];
+    } else {
+      this.text = this.settings.text;
+    }
     this.bar.innerHTML = `<div class="hello-bar-container"><p class="hello-bar-text">${
-      this.settings.text
+      this.text
     }</p></div><div class="hello-bar-text--after"></div>`;
     if (!this.settings.hideClose) {
       this.bar.innerHTML += `<button class="hello-bar-button" aria-controls="${

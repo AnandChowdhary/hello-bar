@@ -5,6 +5,7 @@ const checkOutText =
   "Check out this repository on GitHub now! <a class='cta wiggle' href='https://github.com/AnandChowdhary/hello-bar'>⭐ Star now</a>";
 const euText =
   "🍪 This website uses cookies to make your experience better. <a class='cta' href='#'>Cookie policy</a>";
+const randomText = ["You are seeing message A!", "You are seeing message B!"];
 
 class App {
   constructor() {
@@ -38,6 +39,15 @@ class App {
                     eu: true
                   }
                 }
+              });
+            }, 600);
+            break;
+          case "random":
+            setTimeout(() => {
+              this.libInstance = new Lib({
+                text: randomText,
+                background: "#e24331",
+                size: "large"
               });
             }, 600);
             break;
