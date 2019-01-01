@@ -15,6 +15,7 @@ class App {
       size: "large",
       delay: 500
     });
+    this.addEvents();
     console.log("Demo loaded!", this.libInstance);
     const radioInputs = document.querySelectorAll("input[type='radio']");
     for (let i = 0; i < radioInputs.length; i++) {
@@ -28,6 +29,7 @@ class App {
                 position: "bottom",
                 fixed: true
               });
+              this.addEvents();
             }, 600);
             break;
           case "cookie-law-2":
@@ -40,6 +42,7 @@ class App {
                   }
                 }
               });
+              this.addEvents();
             }, 600);
             break;
           case "random":
@@ -49,6 +52,7 @@ class App {
                 background: "#e24331",
                 size: "large"
               });
+              this.addEvents();
             }, 600);
             break;
           default:
@@ -58,11 +62,38 @@ class App {
                 background: "#5352ed",
                 size: "large"
               });
+              this.addEvents();
             }, 600);
             break;
         }
       });
     }
+  }
+  addEvents() {
+    [
+      "before-created",
+      "after-created",
+      "not-created",
+      "mouse-enter",
+      "mouse-leave",
+      "mouse-down",
+      "mouse-up",
+      "mouse-click",
+      "show-bar",
+      "hide-bar",
+      "close-bar",
+      "color-bar",
+      "calculate-height",
+      "created",
+      "move-element",
+      "start-ip-info",
+      "fetch-ip-info",
+      "error-ip-info"
+    ].forEach(event => {
+      this.libInstance.on(event, e => {
+        console.log("Emitted " + event, e);
+      });
+    });
   }
 }
 

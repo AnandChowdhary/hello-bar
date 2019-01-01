@@ -50,8 +50,10 @@ class App {
     } else {
       this.marginProp = "marginTop";
     }
+    this.events = {};
     this.confirmShow()
       .then(() => {
+        this.$emit("before-created");
         this.insertBar();
         this.functionBar();
         this.calculateHeight();
@@ -59,8 +61,20 @@ class App {
         if (!this.settings.disableBodyMove) this.moveElements(document.body);
         this.moveElements(this.settings.move);
         this.showBar();
+        this.$emit("after-created");
       })
-      .catch(() => {});
+      .catch(() => {
+        this.$emit("not-created");
+      });
+  }
+
+  on(eventName, callback) {
+    this.events[eventName] = callback;
+  }
+
+  $emit(eventName, context) {
+    if (this.events[eventName] && typeof this.events[eventName] === "function")
+      this.events[eventName](context);
   }
 
   confirmShow() {
@@ -86,7 +100,7 @@ class App {
         resolve();
       };
       if (this.settings.hide) return reject();
-      if (this.settings.targeting.location) {
+      if (Object.keys(this.settings.targeting.location).length) {
         this.getIpInfo().then(geolocation => {
           if (this.settings.targeting.location.eu) {
             if (!euCountries.includes(geolocation.country)) return reject();
@@ -121,6 +135,7 @@ class App {
     setTimeout(() => {
       this.bar.classList.add("hello-bar--is-visible");
     }, this.settings.delay || 1);
+    this.$emit("show-bar", this.bar);
   }
 
   hideBar() {
@@ -138,26 +153,47 @@ class App {
     setTimeout(() => {
       this.bar.parentNode.removeChild(this.bar);
     }, (this.settings.duration || 500) + 1);
+    this.$emit("hide-bar", this.bar);
   }
 
   functionBar() {
     if (document.querySelector(".hello-bar button.hello-bar-button")) {
       document
         .querySelector(".hello-bar button.hello-bar-button")
-        .addEventListener("click", () => this.hideBar());
+        .addEventListener("click", () => {
+          this.$emit("close-bar", this.bar);
+          this.hideBar();
+        });
     }
+    const eventMatches = {
+      mouseenter: "mouse-enter",
+      mouseleave: "mouse-leave",
+      click: "mouse-click",
+      mouseup: "mouse-up",
+      mousedown: "mouse-down"
+    };
+    const cta = document.querySelector(".hello-bar .cta");
+    Object.keys(eventMatches).forEach(event => {
+      this.bar.addEventListener(event, () =>
+        this.$emit(eventMatches[event], this.bar)
+      );
+      if (cta) {
+        cta.addEventListener(event, () => this.$emit(eventMatches[event], cta));
+      }
+    });
   }
 
   colorizeBar() {
     if (!document.querySelector(`#${this.id}`)) return;
     const backgroundColor = this.settings.background || "#eeeeee";
+    const textColor =
+      this.settings.textColor || fontColorContrast(backgroundColor);
     this.bar.style.backgroundColor = backgroundColor;
     if (document.querySelector(".hello-bar .hello-bar-text--after"))
       document.querySelector(
         ".hello-bar .hello-bar-text--after"
       ).style.background = `linear-gradient(to right, rgba(0, 0, 0, 0), ${backgroundColor})`;
-    this.bar.style.color =
-      this.settings.textColor || fontColorContrast(backgroundColor);
+    this.bar.style.color = textColor;
     this.bar.style.textAlign = this.settings.align || "center";
     if (document.querySelector(".hello-bar p.hello-bar-text .cta")) {
       document.querySelector(
@@ -170,8 +206,11 @@ class App {
         this.settings.background || "#eeeeee";
       document.querySelector(
         ".hello-bar p.hello-bar-text .cta"
-      ).style.background =
-        this.settings.textColor || fontColorContrast(backgroundColor);
+      ).style.background = textColor;
+      this.$emit("color-bar", {
+        backgroundColor,
+        textColor
+      });
     }
   }
 
@@ -188,6 +227,7 @@ class App {
       this.height = this.bar.offsetHeight;
     }
     this.height = parseInt(this.height);
+    this.$emit("calculate-height", this.height);
   }
 
   insertBar() {
@@ -197,6 +237,7 @@ class App {
     } else {
       document.body.appendChild(this.bar);
     }
+    this.$emit("created", this.bar);
   }
 
   moveElements(elements) {
@@ -228,16 +269,24 @@ class App {
         } else {
           elements.style[this.marginProp] = `${this.height}px`;
         }
+        this.$emit("move-element", elements);
         elements.classList.add("hello-bar--has-moved");
       }
     }
   }
 
   getIpInfo() {
+    this.$emit("start-ip-info");
     return new Promise((resolve, reject) => {
       cachedFetch(this.settings.ipEndpoint || "https://ipinfo.io/json")
-        .then(json => resolve(json))
-        .catch(error => reject(error));
+        .then(json => {
+          this.$emit("fetch-ip-info", json);
+          resolve(json);
+        })
+        .catch(error => {
+          this.$emit("error-ip-info", error);
+          reject(error);
+        });
     });
   }
 }

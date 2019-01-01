@@ -133,9 +133,45 @@ new HelloBar({
 });
 ```
 
+## Events
+
+For analytics, you can listen to events like this:
+
+```js
+const bar = new HelloBar({
+  text: 'Hello world!'
+});
+bar.on("mouse-click", () => {
+  // Do something here
+});
+```
+
+You can listen to the following events. They all return the relevant DOM element (either the bar itself or the call-to-action button):
+
+| Event | Description |
+|-------|-------------|
+| `before-created` | Called before the bar is first created |
+| `created` | Called when the bar is first created |
+| `after-created` | Called after the bar is first created |
+| `not-created` | Called when the bar is not created |
+| `mouse-enter` | Called when mouse enters the bar or CTA |
+| `mouse-leave` | Called when mouse leaves the bar or CTA |
+| `mouse-down` | Called when mouse presses down on the bar or CTA |
+| `mouse-up` | Called when mouse releases on the bar or CTA |
+| `mouse-click` | Called when mouse clicks the bar or CTA |
+| `show-bar` | Called when the bar is shown |
+| `hide-bar` | Called when the bar is hidden |
+| `close-bar` | Called when the close button is clicked |
+| `color-bar` | Called when the bar is colored (returns colors) |
+| `calculate-height` | Called when the bar's height is calculated (returns height) |
+| `move-element` | Called when an element is moved (returns element) |
+| `start-ip-info` | Called when the IP fetch request is started |
+| `fetch-ip-info` | Called when the IP fetch request is returned |
+| `error-ip-info` | Called when the IP fetch request has an error |
+
 ## Todo
-- [ ] Targetting features (single: true)
-- [ ] Better design customization
-- [ ] Random from `text` array for A/B testing
-- [ ] ARIA for close button (?)
-- [ ] Emit events for hello bar showed, closed, cta hover, etc.
+- [x] Targetting features (single: true)
+- [ ] Better design customization (gradients?)
+- [x] Random from `text` array for A/B testing
+- [ ] Revisit ARIA for close button (?)
+- [x] Emit events for hello bar showed, closed, cta hover, etc.

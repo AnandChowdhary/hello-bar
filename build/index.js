@@ -1,6 +1,6 @@
 /*!
  *
- *   hello-bar v0.8.0
+ *   hello-bar v0.9.0
  *   https://github.com/AnandChowdhary/hello-bar
  *
  *   Copyright (c) Anand Chowdhary (https://github.com/AnandChowdhary)
@@ -20,21 +20,21 @@
 })(window, function() {
   return (function(t) {
     var e = {};
-    function __webpack_require__(n) {
-      if (e[n]) return e[n].exports;
-      var r = (e[n] = { i: n, l: !1, exports: {} });
+    function __webpack_require__(i) {
+      if (e[i]) return e[i].exports;
+      var n = (e[i] = { i: i, l: !1, exports: {} });
       return (
-        t[n].call(r.exports, r, r.exports, __webpack_require__),
-        (r.l = !0),
-        r.exports
+        t[i].call(n.exports, n, n.exports, __webpack_require__),
+        (n.l = !0),
+        n.exports
       );
     }
     return (
       (__webpack_require__.m = t),
       (__webpack_require__.c = e),
-      (__webpack_require__.d = function(t, e, n) {
+      (__webpack_require__.d = function(t, e, i) {
         __webpack_require__.o(t, e) ||
-          Object.defineProperty(t, e, { enumerable: !0, get: n });
+          Object.defineProperty(t, e, { enumerable: !0, get: i });
       }),
       (__webpack_require__.r = function(t) {
         "undefined" !== typeof Symbol &&
@@ -45,21 +45,21 @@
       (__webpack_require__.t = function(t, e) {
         if ((1 & e && (t = __webpack_require__(t)), 8 & e)) return t;
         if (4 & e && "object" === typeof t && t && t.__esModule) return t;
-        var n = Object.create(null);
+        var i = Object.create(null);
         if (
-          (__webpack_require__.r(n),
-          Object.defineProperty(n, "default", { enumerable: !0, value: t }),
+          (__webpack_require__.r(i),
+          Object.defineProperty(i, "default", { enumerable: !0, value: t }),
           2 & e && "string" != typeof t)
         )
-          for (var r in t)
+          for (var n in t)
             __webpack_require__.d(
+              i,
               n,
-              r,
               function(e) {
                 return t[e];
-              }.bind(null, r)
+              }.bind(null, n)
             );
-        return n;
+        return i;
       }),
       (__webpack_require__.n = function(t) {
         var e =
@@ -80,42 +80,42 @@
     );
   })([
     function(t, e) {
-      t.exports = function(t, e, r) {
-        var i = /#/.test(t),
-          o = void 0 !== e && void 0 !== r,
-          a = Array.isArray(t),
-          s = "#ffffff",
+      t.exports = function(t, e, n) {
+        var r = /#/.test(t),
+          o = void 0 !== e && void 0 !== n,
+          s = Array.isArray(t),
+          a = "#ffffff",
           c = 0;
-        if (i)
-          (c = n(t.substr(1, 2))),
-            (e = n(t.substr(3, 2))),
-            (r = n(t.substr(5, 2)));
-        else if (o) (c = parseInt(t)), (e = parseInt(e)), (r = parseInt(r));
+        if (r)
+          (c = i(t.substr(1, 2))),
+            (e = i(t.substr(3, 2))),
+            (n = i(t.substr(5, 2)));
+        else if (o) (c = parseInt(t)), (e = parseInt(e)), (n = parseInt(n));
         else {
-          if (!a) return s;
-          (c = parseInt(t[0])), (e = parseInt(t[1])), (r = parseInt(t[2]));
+          if (!s) return a;
+          (c = parseInt(t[0])), (e = parseInt(t[1])), (n = parseInt(t[2]));
         }
         return (
-          Math.sqrt(c * c * 0.241 + e * e * 0.691 + r * r * 0.068) > 130 &&
-            (s = "#000000"),
-          s
+          Math.sqrt(c * c * 0.241 + e * e * 0.691 + n * n * 0.068) > 130 &&
+            (a = "#000000"),
+          a
         );
       };
-      var n = function(t) {
+      var i = function(t) {
         var e = t.replace(/[^a-f0-9]/gi, "");
         return parseInt(e, 16);
       };
     },
-    function(t, e, n) {
-      t.exports = n(3);
+    function(t, e, i) {
+      t.exports = i(3);
     },
-    function(t, e, n) {},
-    function(t, e, n) {
+    function(t, e, i) {},
+    function(t, e, i) {
       "use strict";
-      n.r(e);
-      n(2);
-      var r = n(0),
-        i = n.n(r),
+      i.r(e);
+      i(2);
+      var n = i(0),
+        r = i.n(n),
         o = [
           "BE",
           "BG",
@@ -162,15 +162,15 @@
               })(t);
       }
       function _defineProperties(t, e) {
-        for (var n = 0; n < e.length; n++) {
-          var r = e[n];
-          (r.enumerable = r.enumerable || !1),
-            (r.configurable = !0),
-            "value" in r && (r.writable = !0),
-            Object.defineProperty(t, r.key, r);
+        for (var i = 0; i < e.length; i++) {
+          var n = e[i];
+          (n.enumerable = n.enumerable || !1),
+            (n.configurable = !0),
+            "value" in n && (n.writable = !0),
+            Object.defineProperty(t, n.key, n);
         }
       }
-      var a = (function() {
+      var s = (function() {
         function App(t) {
           var e = this;
           !(function(t, e) {
@@ -193,8 +193,13 @@
                 .substr(2)),
             (this.bar = document.createElement("div")),
             this.bar.setAttribute("id", this.id),
+            "object" === _typeof(this.settings.text)
+              ? (this.text = this.settings.text[
+                  Math.floor(Math.random() * this.settings.text.length)
+                ])
+              : (this.text = this.settings.text),
             (this.bar.innerHTML = '<div class="hello-bar-container"><p class="hello-bar-text">'.concat(
-              this.settings.text,
+              this.text,
               '</p></div><div class="hello-bar-text--after"></div>'
             )),
             this.settings.hideClose ||
@@ -211,76 +216,95 @@
               ? (this.bar.classList.add("hello-bar--is-bottom"),
                 (this.marginProp = "marginBottom"))
               : (this.marginProp = "marginTop"),
+            (this.events = {}),
             this.confirmShow()
               .then(function() {
-                e.insertBar(),
+                e.$emit("before-created"),
+                  e.insertBar(),
                   e.functionBar(),
                   e.calculateHeight(),
                   e.colorizeBar(),
                   e.settings.disableBodyMove || e.moveElements(document.body),
                   e.moveElements(e.settings.move),
-                  e.showBar();
+                  e.showBar(),
+                  e.$emit("after-created");
               })
-              .catch(function() {});
+              .catch(function() {
+                e.$emit("not-created");
+              });
         }
-        var t, e, n;
+        var t, e, i;
         return (
           (t = App),
           (e = [
             {
+              key: "on",
+              value: function(t, e) {
+                this.events[t] = e;
+              }
+            },
+            {
+              key: "$emit",
+              value: function(t, e) {
+                this.events[t] &&
+                  "function" === typeof this.events[t] &&
+                  this.events[t](e);
+              }
+            },
+            {
               key: "confirmShow",
               value: function() {
                 var t = this;
-                return new Promise(function(e, n) {
-                  var r = function() {
+                return new Promise(function(e, i) {
+                  var n = function() {
                     return t.settings.targeting.once &&
                       sessionStorage.getItem("hello-bar--session-showed")
-                      ? n()
+                      ? i()
                       : t.settings.targeting.onceUser &&
                         localStorage.getItem("hello-bar--user-showed")
-                      ? n()
+                      ? i()
                       : (t.settings.targeting.params &&
                           Object.keys(t.settings.targeting.params).forEach(
                             function(e) {
-                              var r = (function(t) {
+                              var n = (function(t) {
                                 var e = window.location.href;
                                 t = t.replace(/[[\]]/g, "\\$&");
-                                var n = new RegExp(
+                                var i = new RegExp(
                                   "[?&]" + t + "(=([^&#]*)|&|#|$)"
                                 ).exec(e);
-                                if (n && n[2])
+                                if (i && i[2])
                                   return decodeURIComponent(
-                                    n[2].replace(/\+/g, " ")
+                                    i[2].replace(/\+/g, " ")
                                   );
                               })(e);
-                              if (r && r !== t.settings.targeting.params[e])
-                                return n();
+                              if (n && n !== t.settings.targeting.params[e])
+                                return i();
                             }
                           ),
                         void e());
                   };
-                  if (t.settings.hide) return n();
-                  t.settings.targeting.location
+                  if (t.settings.hide) return i();
+                  Object.keys(t.settings.targeting.location).length
                     ? t.getIpInfo().then(function(e) {
                         if (
                           t.settings.targeting.location.eu &&
                           !o.includes(e.country)
                         )
-                          return n();
+                          return i();
                         ["country", "city", "ip", "postal", "region"].forEach(
-                          function(r) {
+                          function(n) {
                             if (
-                              t.settings.targeting.location[r] &&
-                              t.settings.targeting.location[r].constructor ===
+                              t.settings.targeting.location[n] &&
+                              t.settings.targeting.location[n].constructor ===
                                 Array &&
-                              !t.settings.targeting.location[r].includes(e[r])
+                              !t.settings.targeting.location[n].includes(e[n])
                             )
-                              return n();
+                              return i();
                           }
                         ),
-                          r();
+                          n();
                       })
-                    : r();
+                    : n();
                 });
               }
             },
@@ -293,7 +317,8 @@
                     (this.settings.duration || 500) + "ms"),
                   setTimeout(function() {
                     t.bar.classList.add("hello-bar--is-visible");
-                  }, this.settings.delay || 1));
+                  }, this.settings.delay || 1),
+                  this.$emit("show-bar", this.bar));
               }
             },
             {
@@ -306,20 +331,21 @@
                     localStorage.setItem("hello-bar--user-showed", !0);
                   for (
                     var e = document.querySelectorAll(".hello-bar--has-moved"),
-                      n = 0;
-                    n < e.length;
-                    n++
+                      i = 0;
+                    i < e.length;
+                    i++
                   ) {
-                    var r = parseInt(e[n].style[this.marginProp]);
-                    (e[n].style[this.marginProp] = "".concat(
-                      r - this.height,
+                    var n = parseInt(e[i].style[this.marginProp]);
+                    (e[i].style[this.marginProp] = "".concat(
+                      n - this.height,
                       "px"
                     )),
-                      e[n].classList.remove("hello-bar--has-moved");
+                      e[i].classList.remove("hello-bar--has-moved");
                   }
                   setTimeout(function() {
                     t.bar.parentNode.removeChild(t.bar);
-                  }, (this.settings.duration || 500) + 1);
+                  }, (this.settings.duration || 500) + 1),
+                    this.$emit("hide-bar", this.bar);
                 }
               }
             },
@@ -331,15 +357,33 @@
                   document
                     .querySelector(".hello-bar button.hello-bar-button")
                     .addEventListener("click", function() {
-                      return t.hideBar();
+                      t.$emit("close-bar", t.bar), t.hideBar();
                     });
+                var e = {
+                    mouseenter: "mouse-enter",
+                    mouseleave: "mouse-leave",
+                    click: "mouse-click",
+                    mouseup: "mouse-up",
+                    mousedown: "mouse-down"
+                  },
+                  i = document.querySelector(".hello-bar .cta");
+                Object.keys(e).forEach(function(n) {
+                  t.bar.addEventListener(n, function() {
+                    return t.$emit(e[n], t.bar);
+                  }),
+                    i &&
+                      i.addEventListener(n, function() {
+                        return t.$emit(e[n], i);
+                      });
+                });
               }
             },
             {
               key: "colorizeBar",
               value: function() {
                 if (document.querySelector("#".concat(this.id))) {
-                  var t = this.settings.background || "#eeeeee";
+                  var t = this.settings.background || "#eeeeee",
+                    e = this.settings.textColor || r()(t);
                   (this.bar.style.backgroundColor = t),
                     document.querySelector(
                       ".hello-bar .hello-bar-text--after"
@@ -350,7 +394,7 @@
                         t,
                         ")"
                       )),
-                    (this.bar.style.color = this.settings.textColor || i()(t)),
+                    (this.bar.style.color = e),
                     (this.bar.style.textAlign =
                       this.settings.align || "center"),
                     document.querySelector(
@@ -367,7 +411,11 @@
                       ).style.color = this.settings.background || "#eeeeee"),
                       (document.querySelector(
                         ".hello-bar p.hello-bar-text .cta"
-                      ).style.background = this.settings.textColor || i()(t)));
+                      ).style.background = e),
+                      this.$emit("color-bar", {
+                        backgroundColor: t,
+                        textColor: e
+                      }));
                 }
               }
             },
@@ -383,7 +431,8 @@
                   this.bar.getBoundingClientRect().height
                     ? (this.height = this.bar.getBoundingClientRect().height)
                     : (this.height = this.bar.offsetHeight),
-                  (this.height = parseInt(this.height)));
+                  (this.height = parseInt(this.height)),
+                  this.$emit("calculate-height", this.height));
               }
             },
             {
@@ -392,7 +441,8 @@
                 var t = document.querySelector("body > *");
                 t
                   ? document.body.insertBefore(this.bar, t)
-                  : document.body.appendChild(this.bar);
+                  : document.body.appendChild(this.bar),
+                  this.$emit("created", this.bar);
               }
             },
             {
@@ -401,29 +451,30 @@
                 if (t)
                   if ("string" === typeof t)
                     for (
-                      var e = document.querySelectorAll(t), n = 0;
-                      n < e.length;
-                      n++
+                      var e = document.querySelectorAll(t), i = 0;
+                      i < e.length;
+                      i++
                     )
-                      this.moveElements(e[n]);
+                      this.moveElements(e[i]);
                   else if (t.constructor === Array && t.length)
-                    for (var r = 0; r < t.length; r++) this.moveElements(t[r]);
+                    for (var n = 0; n < t.length; n++) this.moveElements(t[n]);
                   else if (
                     "object" === _typeof(t) &&
                     "object" === _typeof(t.classList) &&
                     "function" === typeof t.classList.add &&
                     !t.classList.contains("hello-bar--has-moved")
                   ) {
-                    var i = t.currentStyle || window.getComputedStyle(t);
-                    "object" === _typeof(i) && i[this.marginProp]
+                    var r = t.currentStyle || window.getComputedStyle(t);
+                    "object" === _typeof(r) && r[this.marginProp]
                       ? (t.style[this.marginProp] = "".concat(
-                          parseInt(i[this.marginProp]) + this.height,
+                          parseInt(r[this.marginProp]) + this.height,
                           "px"
                         ))
                       : (t.style[this.marginProp] = "".concat(
                           this.height,
                           "px"
                         )),
+                      this.$emit("move-element", t),
                       t.classList.add("hello-bar--has-moved");
                   }
               }
@@ -432,53 +483,56 @@
               key: "getIpInfo",
               value: function() {
                 var t = this;
-                return new Promise(function(e, n) {
-                  var r, i;
-                  ((r = t.settings.ipEndpoint || "https://ipinfo.io/json"),
-                  new Promise(function(t, e) {
-                    var n = "hello_bar_cache_"
-                      .concat(r)
-                      .concat(i ? "_" + JSON.stringify(i) : "");
-                    if (localStorage.getItem(n))
-                      try {
-                        var o = JSON.parse(localStorage.getItem(n));
-                        if (o.expires_at > new Date().getTime())
-                          return t(o.cache_value);
-                      } catch (a) {}
-                    fetch(r, i)
-                      .then(function(t) {
-                        return t.json();
+                return (
+                  this.$emit("start-ip-info"),
+                  new Promise(function(e, i) {
+                    var n, r;
+                    ((n = t.settings.ipEndpoint || "https://ipinfo.io/json"),
+                    new Promise(function(t, e) {
+                      var i = "hello_bar_cache_"
+                        .concat(n)
+                        .concat(r ? "_" + JSON.stringify(r) : "");
+                      if (localStorage.getItem(i))
+                        try {
+                          var o = JSON.parse(localStorage.getItem(i));
+                          if (o.expires_at > new Date().getTime())
+                            return t(o.cache_value);
+                        } catch (s) {}
+                      fetch(n, r)
+                        .then(function(t) {
+                          return t.json();
+                        })
+                        .then(function(e) {
+                          localStorage.setItem(
+                            i,
+                            JSON.stringify({
+                              created_at: new Date().getTime(),
+                              expires_at: new Date().getTime() + 6048e5,
+                              cache_value: e
+                            })
+                          ),
+                            t(e);
+                        })
+                        .catch(function(t) {
+                          return e(t);
+                        });
+                    }))
+                      .then(function(i) {
+                        t.$emit("fetch-ip-info", i), e(i);
                       })
-                      .then(function(e) {
-                        localStorage.setItem(
-                          n,
-                          JSON.stringify({
-                            created_at: new Date().getTime(),
-                            expires_at: new Date().getTime() + 6048e5,
-                            cache_value: e
-                          })
-                        ),
-                          t(e);
-                      })
-                      .catch(function(t) {
-                        return e(t);
+                      .catch(function(e) {
+                        t.$emit("error-ip-info", e), i(e);
                       });
-                  }))
-                    .then(function(t) {
-                      return e(t);
-                    })
-                    .catch(function(t) {
-                      return n(t);
-                    });
-                });
+                  })
+                );
               }
             }
           ]) && _defineProperties(t.prototype, e),
-          n && _defineProperties(t, n),
+          i && _defineProperties(t, i),
           App
         );
       })();
-      e.default = a;
+      e.default = s;
     }
   ]);
 });
