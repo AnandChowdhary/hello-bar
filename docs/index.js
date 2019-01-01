@@ -346,7 +346,7 @@
                 }),
                   n &&
                     n.addEventListener(i, function() {
-                      return t.$emit(e[i], n);
+                      return t.$emit("cta-".concat(e[i]), n);
                     });
               });
             }
@@ -595,6 +595,11 @@
                 "mouse-down",
                 "mouse-up",
                 "mouse-click",
+                "cta-mouse-enter",
+                "cta-mouse-leave",
+                "cta-mouse-down",
+                "cta-mouse-up",
+                "cta-mouse-click",
                 "show-bar",
                 "hide-bar",
                 "close-bar",

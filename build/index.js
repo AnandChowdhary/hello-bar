@@ -1,6 +1,6 @@
 /*!
  *
- *   hello-bar v0.9.0
+ *   hello-bar v1.0.0
  *   https://github.com/AnandChowdhary/hello-bar
  *
  *   Copyright (c) Anand Chowdhary (https://github.com/AnandChowdhary)
@@ -373,7 +373,7 @@
                   }),
                     i &&
                       i.addEventListener(n, function() {
-                        return t.$emit(e[n], i);
+                        return t.$emit("cta-".concat(e[n]), i);
                       });
                 });
               }

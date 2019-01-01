@@ -147,8 +147,9 @@ const bar = new HelloBar({
     'You are seeing B! <a href="/link-2" class="cta">Click here</a>'
   ]
 });
+// Track CTA clicks on Google Analytics
 window.ga("create", "UA-XXXXX-Y", "auto");
-bar.on("mouse-click", e => window.ga("send", "event", "ab-test", e.getAttribute("href")));
+bar.on("cta-mouse-click", e => window.ga("send", "event", "ab-test", e.getAttribute("href")));
 ```
 
 ## Events
@@ -201,4 +202,4 @@ You can listen to the following events. They all return the relevant DOM element
 
 ## License
 
-MIT
+MIT (c) [Anand Chowdhary](https://anandchowdhary.com/?utm_source=github&utm_medium=repository&utm_campaign=hello-bar&utm_term=license-link)
