@@ -194,11 +194,12 @@ You can listen to the following events. They all return the relevant DOM element
 | `error-ip-info` | Called when the IP fetch request has an error |
 
 ## Todo
-- [x] Targetting features (single: true)
-- [ ] Better design customization (gradients?)
-- [x] Random from `text` array for A/B testing
-- [ ] Revisit ARIA for close button (?)
+- [x] Targeting features (single: true)
 - [x] Emit events for hello bar showed, closed, cta hover, etc.
+- [x] Random from `text` array for A/B testing
+- [ ] Better design customization (gradients?)
+- [ ] Support for other IP info endpoints (?)
+- [ ] Revisit ARIA for close button (?)
 
 ## License
 
