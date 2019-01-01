@@ -6,7 +6,7 @@ class App {
   constructor(settings) {
     settings = settings || {};
     this.settings = settings;
-    ["i18n"].forEach(category => {
+    ["i18n", "targeting"].forEach(category => {
       this.settings[category] = this.settings[category] || {};
     });
     this.id =
@@ -33,13 +33,28 @@ class App {
     if (this.settings.fixed) {
       this.bar.classList.add("hello-bar--is-fixed");
     }
-    this.insertBar();
-    this.functionBar();
-    this.calculateHeight();
-    this.colorizeBar();
-    if (!this.settings.disableBodyMove) this.moveElements(document.body);
-    this.moveElements(this.settings.move);
-    this.showBar();
+    this.confirmShow();
+    if (this.show) {
+      this.insertBar();
+      this.functionBar();
+      this.calculateHeight();
+      this.colorizeBar();
+      if (!this.settings.disableBodyMove) this.moveElements(document.body);
+      this.moveElements(this.settings.move);
+      this.showBar();
+    }
+  }
+
+  confirmShow() {
+    this.show = !this.settings.hide;
+    if (this.show) {
+      if (this.settings.targeting.once) {
+        if (sessionStorage.getItem("hello-bar-session-showed"))
+          this.show = false;
+      } else if (this.settings.targeting.onceUser) {
+        if (localStorage.getItem("hello-bar-user-showed")) this.show = false;
+      }
+    }
   }
 
   showBar() {
@@ -53,6 +68,8 @@ class App {
   hideBar() {
     if (!document.querySelector(`#${this.id}`)) return;
     this.bar.classList.remove("hello-bar--is-visible");
+    sessionStorage.setItem("hello-bar-session-showed", true);
+    localStorage.setItem("hello-bar-user-showed", true);
     const movedElements = document.querySelectorAll(".hello-bar--has-moved");
     for (let i = 0; i < movedElements.length; i++) {
       const currentMargin = parseInt(movedElements[i].style.marginTop);
