@@ -127,6 +127,7 @@ You can show a welcome message to users coming from your Product Hunt page:
 ```js
 new HelloBar({
   text: 'Hello Product Hunter! Use code PH20 for 20% off when you sign up!',
+  background: "#dc542f",
   targeting: {
     params: {
       ref: "producthunt"
