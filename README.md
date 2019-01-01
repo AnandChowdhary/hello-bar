@@ -157,11 +157,16 @@ You can listen to the following events. They all return the relevant DOM element
 | `created` | Called when the bar is first created |
 | `after-created` | Called after the bar is first created |
 | `not-created` | Called when the bar is not created |
-| `mouse-enter` | Called when mouse enters the bar or CTA |
-| `mouse-leave` | Called when mouse leaves the bar or CTA |
-| `mouse-down` | Called when mouse presses down on the bar or CTA |
-| `mouse-up` | Called when mouse releases on the bar or CTA |
-| `mouse-click` | Called when mouse clicks the bar or CTA |
+| `mouse-enter` | Called when mouse enters the bar |
+| `mouse-leave` | Called when mouse leaves the bar |
+| `mouse-down` | Called when mouse presses down on the bar |
+| `mouse-up` | Called when mouse releases on the bar |
+| `mouse-click` | Called when mouse clicks the bar |
+| `cta-mouse-enter` | Called when mouse enters CTA button |
+| `cta-mouse-leave` | Called when mouse leaves CTA button |
+| `cta-mouse-down` | Called when mouse presses down on CTA button |
+| `cta-mouse-up` | Called when mouse releases on CTA button |
+| `cta-mouse-click` | Called when mouse clicks CTA button |
 | `show-bar` | Called when the bar is shown |
 | `hide-bar` | Called when the bar is hidden |
 | `close-bar` | Called when the close button is clicked |

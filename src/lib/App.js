@@ -178,7 +178,9 @@ class App {
         this.$emit(eventMatches[event], this.bar)
       );
       if (cta) {
-        cta.addEventListener(event, () => this.$emit(eventMatches[event], cta));
+        cta.addEventListener(event, () =>
+          this.$emit(`cta-${eventMatches[event]}`, cta)
+        );
       }
     });
   }
