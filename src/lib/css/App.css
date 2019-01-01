@@ -11,6 +11,12 @@
     opacity: 0;
 }
 
+.hello-bar.hello-bar.hello-bar--is-bottom {
+    top: auto;
+    transform: translateY(100%);
+    bottom: 0;
+}
+
 .hello-bar.hello-bar.hello-bar--is-visible {
     transform: translateY(0);
     opacity: 1;

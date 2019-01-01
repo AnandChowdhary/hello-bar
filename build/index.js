@@ -1,6 +1,6 @@
 /*!
  *
- *   hello-bar v0.7.0
+ *   hello-bar v0.8.0
  *   https://github.com/AnandChowdhary/hello-bar
  *
  *   Copyright (c) Anand Chowdhary (https://github.com/AnandChowdhary)
@@ -184,6 +184,8 @@
             }),
             (this.settings.targeting.location =
               this.settings.targeting.location || {}),
+            (this.settings.targeting.params =
+              this.settings.targeting.params || {}),
             (this.id =
               "hoverBar-" +
               Math.random()
@@ -205,6 +207,10 @@
             this.bar.classList.add("hello-bar"),
             this.settings.fixed &&
               this.bar.classList.add("hello-bar--is-fixed"),
+            "bottom" === this.settings.position
+              ? (this.bar.classList.add("hello-bar--is-bottom"),
+                (this.marginProp = "marginBottom"))
+              : (this.marginProp = "marginTop"),
             this.confirmShow()
               .then(function() {
                 e.insertBar(),
@@ -226,38 +232,55 @@
               value: function() {
                 var t = this;
                 return new Promise(function(e, n) {
+                  var r = function() {
+                    return t.settings.targeting.once &&
+                      sessionStorage.getItem("hello-bar--session-showed")
+                      ? n()
+                      : t.settings.targeting.onceUser &&
+                        localStorage.getItem("hello-bar--user-showed")
+                      ? n()
+                      : (t.settings.targeting.params &&
+                          Object.keys(t.settings.targeting.params).forEach(
+                            function(e) {
+                              var r = (function(t) {
+                                var e = window.location.href;
+                                t = t.replace(/[[\]]/g, "\\$&");
+                                var n = new RegExp(
+                                  "[?&]" + t + "(=([^&#]*)|&|#|$)"
+                                ).exec(e);
+                                if (n && n[2])
+                                  return decodeURIComponent(
+                                    n[2].replace(/\+/g, " ")
+                                  );
+                              })(e);
+                              if (r && r !== t.settings.targeting.params[e])
+                                return n();
+                            }
+                          ),
+                        void e());
+                  };
                   if (t.settings.hide) return n();
-                  if (t.settings.targeting.location)
-                    t.getIpInfo().then(function(r) {
-                      if (
-                        t.settings.targeting.location.eu &&
-                        !o.includes(r.country)
-                      )
-                        return n();
-                      ["country", "city", "ip", "postal", "region"].forEach(
-                        function(e) {
-                          if (
-                            t.settings.targeting.location[e] &&
-                            t.settings.targeting.location[e].constructor ===
-                              Array &&
-                            !t.settings.targeting.location[e].includes(r[e])
-                          )
-                            return n();
-                        }
-                      ),
-                        e();
-                    });
-                  else {
-                    if (t.settings.targeting.once) {
-                      if (sessionStorage.getItem("hello-bar--session-showed"))
-                        return n();
-                    } else if (
-                      t.settings.targeting.onceUser &&
-                      localStorage.getItem("hello-bar--user-showed")
-                    )
-                      return n();
-                    e();
-                  }
+                  t.settings.targeting.location
+                    ? t.getIpInfo().then(function(e) {
+                        if (
+                          t.settings.targeting.location.eu &&
+                          !o.includes(e.country)
+                        )
+                          return n();
+                        ["country", "city", "ip", "postal", "region"].forEach(
+                          function(r) {
+                            if (
+                              t.settings.targeting.location[r] &&
+                              t.settings.targeting.location[r].constructor ===
+                                Array &&
+                              !t.settings.targeting.location[r].includes(e[r])
+                            )
+                              return n();
+                          }
+                        ),
+                          r();
+                      })
+                    : r();
                 });
               }
             },
@@ -287,8 +310,11 @@
                     n < e.length;
                     n++
                   ) {
-                    var r = parseInt(e[n].style.marginTop);
-                    (e[n].style.marginTop = "".concat(r - this.height, "px")),
+                    var r = parseInt(e[n].style[this.marginProp]);
+                    (e[n].style[this.marginProp] = "".concat(
+                      r - this.height,
+                      "px"
+                    )),
                       e[n].classList.remove("hello-bar--has-moved");
                   }
                   setTimeout(function() {
@@ -389,12 +415,15 @@
                     !t.classList.contains("hello-bar--has-moved")
                   ) {
                     var i = t.currentStyle || window.getComputedStyle(t);
-                    "object" === _typeof(i) && i.marginTop
-                      ? (t.style.marginTop = "".concat(
-                          parseInt(i.marginTop) + this.height,
+                    "object" === _typeof(i) && i[this.marginProp]
+                      ? (t.style[this.marginProp] = "".concat(
+                          parseInt(i[this.marginProp]) + this.height,
                           "px"
                         ))
-                      : (t.style.marginTop = "".concat(this.height, "px")),
+                      : (t.style[this.marginProp] = "".concat(
+                          this.height,
+                          "px"
+                        )),
                       t.classList.add("hello-bar--has-moved");
                   }
               }

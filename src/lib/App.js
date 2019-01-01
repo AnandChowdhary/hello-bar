@@ -37,6 +37,12 @@ class App {
     if (this.settings.fixed) {
       this.bar.classList.add("hello-bar--is-fixed");
     }
+    if (this.settings.position === "bottom") {
+      this.bar.classList.add("hello-bar--is-bottom");
+      this.marginProp = "marginBottom";
+    } else {
+      this.marginProp = "marginTop";
+    }
     this.confirmShow()
       .then(() => {
         this.insertBar();
@@ -117,8 +123,9 @@ class App {
     localStorage.setItem("hello-bar--user-showed", true);
     const movedElements = document.querySelectorAll(".hello-bar--has-moved");
     for (let i = 0; i < movedElements.length; i++) {
-      const currentMargin = parseInt(movedElements[i].style.marginTop);
-      movedElements[i].style.marginTop = `${currentMargin - this.height}px`;
+      const currentMargin = parseInt(movedElements[i].style[this.marginProp]);
+      movedElements[i].style[this.marginProp] = `${currentMargin -
+        this.height}px`;
       movedElements[i].classList.remove("hello-bar--has-moved");
     }
     setTimeout(() => {
@@ -207,11 +214,12 @@ class App {
       ) {
         const style =
           elements.currentStyle || window.getComputedStyle(elements);
-        if (typeof style === "object" && style.marginTop) {
-          elements.style.marginTop = `${parseInt(style.marginTop) +
-            this.height}px`;
+        if (typeof style === "object" && style[this.marginProp]) {
+          elements.style[this.marginProp] = `${parseInt(
+            style[this.marginProp]
+          ) + this.height}px`;
         } else {
-          elements.style.marginTop = `${this.height}px`;
+          elements.style[this.marginProp] = `${this.height}px`;
         }
         elements.classList.add("hello-bar--has-moved");
       }

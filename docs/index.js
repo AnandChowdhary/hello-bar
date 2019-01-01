@@ -158,6 +158,8 @@
           }),
           (this.settings.targeting.location =
             this.settings.targeting.location || {}),
+          (this.settings.targeting.params =
+            this.settings.targeting.params || {}),
           (this.id =
             "hoverBar-" +
             Math.random()
@@ -178,6 +180,10 @@
               )),
           this.bar.classList.add("hello-bar"),
           this.settings.fixed && this.bar.classList.add("hello-bar--is-fixed"),
+          "bottom" === this.settings.position
+            ? (this.bar.classList.add("hello-bar--is-bottom"),
+              (this.marginProp = "marginBottom"))
+            : (this.marginProp = "marginTop"),
           this.confirmShow()
             .then(function() {
               n.insertBar(),
@@ -199,38 +205,55 @@
             value: function() {
               var t = this;
               return new Promise(function(e, n) {
+                var i = function() {
+                  return t.settings.targeting.once &&
+                    sessionStorage.getItem("hello-bar--session-showed")
+                    ? n()
+                    : t.settings.targeting.onceUser &&
+                      localStorage.getItem("hello-bar--user-showed")
+                    ? n()
+                    : (t.settings.targeting.params &&
+                        Object.keys(t.settings.targeting.params).forEach(
+                          function(e) {
+                            var i = (function(t) {
+                              var e = window.location.href;
+                              t = t.replace(/[[\]]/g, "\\$&");
+                              var n = new RegExp(
+                                "[?&]" + t + "(=([^&#]*)|&|#|$)"
+                              ).exec(e);
+                              if (n && n[2])
+                                return decodeURIComponent(
+                                  n[2].replace(/\+/g, " ")
+                                );
+                            })(e);
+                            if (i && i !== t.settings.targeting.params[e])
+                              return n();
+                          }
+                        ),
+                      void e());
+                };
                 if (t.settings.hide) return n();
-                if (t.settings.targeting.location)
-                  t.getIpInfo().then(function(i) {
-                    if (
-                      t.settings.targeting.location.eu &&
-                      !r.includes(i.country)
-                    )
-                      return n();
-                    ["country", "city", "ip", "postal", "region"].forEach(
-                      function(e) {
-                        if (
-                          t.settings.targeting.location[e] &&
-                          t.settings.targeting.location[e].constructor ===
-                            Array &&
-                          !t.settings.targeting.location[e].includes(i[e])
-                        )
-                          return n();
-                      }
-                    ),
-                      e();
-                  });
-                else {
-                  if (t.settings.targeting.once) {
-                    if (sessionStorage.getItem("hello-bar--session-showed"))
-                      return n();
-                  } else if (
-                    t.settings.targeting.onceUser &&
-                    localStorage.getItem("hello-bar--user-showed")
-                  )
-                    return n();
-                  e();
-                }
+                t.settings.targeting.location
+                  ? t.getIpInfo().then(function(e) {
+                      if (
+                        t.settings.targeting.location.eu &&
+                        !r.includes(e.country)
+                      )
+                        return n();
+                      ["country", "city", "ip", "postal", "region"].forEach(
+                        function(i) {
+                          if (
+                            t.settings.targeting.location[i] &&
+                            t.settings.targeting.location[i].constructor ===
+                              Array &&
+                            !t.settings.targeting.location[i].includes(e[i])
+                          )
+                            return n();
+                        }
+                      ),
+                        i();
+                    })
+                  : i();
               });
             }
           },
@@ -260,8 +283,11 @@
                   n < e.length;
                   n++
                 ) {
-                  var i = parseInt(e[n].style.marginTop);
-                  (e[n].style.marginTop = "".concat(i - this.height, "px")),
+                  var i = parseInt(e[n].style[this.marginProp]);
+                  (e[n].style[this.marginProp] = "".concat(
+                    i - this.height,
+                    "px"
+                  )),
                     e[n].classList.remove("hello-bar--has-moved");
                 }
                 setTimeout(function() {
@@ -357,12 +383,12 @@
                   !t.classList.contains("hello-bar--has-moved")
                 ) {
                   var o = t.currentStyle || window.getComputedStyle(t);
-                  "object" === a(o) && o.marginTop
-                    ? (t.style.marginTop = "".concat(
-                        parseInt(o.marginTop) + this.height,
+                  "object" === a(o) && o[this.marginProp]
+                    ? (t.style[this.marginProp] = "".concat(
+                        parseInt(o[this.marginProp]) + this.height,
                         "px"
                       ))
-                    : (t.style.marginTop = "".concat(this.height, "px")),
+                    : (t.style[this.marginProp] = "".concat(this.height, "px")),
                     t.classList.add("hello-bar--has-moved");
                 }
             }
@@ -441,7 +467,11 @@
               switch ((e.libInstance.hideBar(), n[t].value)) {
                 case "cookie-law-1":
                   setTimeout(function() {
-                    e.libInstance = new c({ text: u });
+                    e.libInstance = new c({
+                      text: u,
+                      position: "bottom",
+                      fixed: !0
+                    });
                   }, 600);
                   break;
                 case "cookie-law-2":

@@ -23,7 +23,9 @@ class App {
           case "cookie-law-1":
             setTimeout(() => {
               this.libInstance = new Lib({
-                text: euText
+                text: euText,
+                position: "bottom",
+                fixed: true
               });
             }, 600);
             break;
