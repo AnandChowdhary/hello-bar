@@ -89,3 +89,4 @@ Acceptance `move` values:
 - [ ] Better design customization
 - [ ] Random from `text` array for A/B testing
 - [ ] ARIA for close button (?)
+- [ ] Emit events for hello bar showed, closed, cta hover, etc.

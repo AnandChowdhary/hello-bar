@@ -1,6 +1,7 @@
 import "./css/App.css";
 import fontColorContrast from "font-color-contrast";
 import cachedFetch from "./cachedFetch";
+import euCountries from "./euCountries";
 
 class App {
   constructor(settings) {
@@ -33,28 +34,61 @@ class App {
     if (this.settings.fixed) {
       this.bar.classList.add("hello-bar--is-fixed");
     }
-    this.confirmShow();
-    if (this.show) {
-      this.insertBar();
-      this.functionBar();
-      this.calculateHeight();
-      this.colorizeBar();
-      if (!this.settings.disableBodyMove) this.moveElements(document.body);
-      this.moveElements(this.settings.move);
-      this.showBar();
-    }
+    this.confirmShow()
+      .then(() => {
+        this.insertBar();
+        this.functionBar();
+        this.calculateHeight();
+        this.colorizeBar();
+        if (!this.settings.disableBodyMove) this.moveElements(document.body);
+        this.moveElements(this.settings.move);
+        this.showBar();
+      })
+      .catch(() => {});
   }
 
   confirmShow() {
-    this.show = !this.settings.hide;
-    if (this.show) {
-      if (this.settings.targeting.once) {
-        if (sessionStorage.getItem("hello-bar-session-showed"))
-          this.show = false;
-      } else if (this.settings.targeting.onceUser) {
-        if (localStorage.getItem("hello-bar-user-showed")) this.show = false;
+    return new Promise((resolve, reject) => {
+      if (this.settings.hide) return reject();
+      if (
+        this.settings.targeting.eu ||
+        this.settings.targeting.country ||
+        this.settings.targeting.city ||
+        this.settings.targeting.ip ||
+        this.settings.targeting.postal ||
+        this.settings.targeting.region
+      ) {
+        this.getIpInfo().then(geolocation => {
+          if (this.settings.targeting.eu) {
+            if (!euCountries.includes(geolocation.country)) return reject();
+          }
+          ["country", "city", "ip", "postal", "region"].forEach(
+            targetOptions => {
+              if (
+                this.settings.targeting[targetOptions] &&
+                this.settings.targeting[targetOptions].constructor === Array
+              ) {
+                if (
+                  !this.settings.targeting[targetOptions].includes(
+                    geolocation[targetOptions]
+                  )
+                )
+                  return reject();
+              }
+            }
+          );
+          resolve();
+        });
+      } else {
+        if (this.settings.targeting.once) {
+          if (sessionStorage.getItem("hello-bar--session-showed"))
+            return reject();
+        } else if (this.settings.targeting.onceUser) {
+          if (localStorage.getItem("hello-bar--user-showed")) return reject();
+        }
+        resolve();
       }
-    }
+    });
   }
 
   showBar() {
@@ -68,8 +102,8 @@ class App {
   hideBar() {
     if (!document.querySelector(`#${this.id}`)) return;
     this.bar.classList.remove("hello-bar--is-visible");
-    sessionStorage.setItem("hello-bar-session-showed", true);
-    localStorage.setItem("hello-bar-user-showed", true);
+    sessionStorage.setItem("hello-bar--session-showed", true);
+    localStorage.setItem("hello-bar--user-showed", true);
     const movedElements = document.querySelectorAll(".hello-bar--has-moved");
     for (let i = 0; i < movedElements.length; i++) {
       const currentMargin = parseInt(movedElements[i].style.marginTop);
