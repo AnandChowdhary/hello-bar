@@ -1,6 +1,6 @@
 # Hello Bar
 
-This is an open-source alternate to the [Hello Bar](https://www.hellobar.com/) service. It's a great way to capture leads, announce a sale or discount, etc.
+This is an open-source alternate to the [Hello Bar](https://www.hellobar.com/) service. It's a great way to capture leads, announce a sale or discount, etc. It supports targeting based on location, referer, A/B testing, etc.
 
 
 [![](https://img.shields.io/travis/AnandChowdhary/hello-bar.svg)](https://travis-ci.org/AnandChowdhary/hello-bar)
@@ -134,6 +134,21 @@ new HelloBar({
     }
   }
 });
+```
+
+### A/B testing
+
+You can do client-side A/B testing by using an array for `text` instead of a string. You can then track specific events using `HelloBar.on()`:
+
+```js
+const bar = new HelloBar({
+  text: [
+    'You are seeing A! <a href="/link-1" class="cta">Click here</a>',
+    'You are seeing B! <a href="/link-2" class="cta">Click here</a>'
+  ]
+});
+window.ga("create", "UA-XXXXX-Y", "auto");
+bar.on("mouse-click", e => window.ga("send", "event", "ab-test", e.getAttribute("href")));
 ```
 
 ## Events
