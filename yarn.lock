@@ -2694,13 +2694,13 @@ css-has-pseudo@^0.10.0:
     postcss "^7.0.6"
     postcss-selector-parser "^5.0.0-rc.4"
 
-css-loader@2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-2.0.2.tgz#5b02031745ba6d6721bcecad39daaea9804e30d3"
-  integrity sha512-28hdCb5gCuTKUA+R6KzLwgxK6pUfgvrUyMNn7avOUQYFvmc13djru28uG+NF/pRre7Odd6B/kmJErCcpFZZQpQ==
+css-loader@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-2.1.0.tgz#42952ac22bca5d076978638e9813abce49b8f0cc"
+  integrity sha512-MoOu+CStsGrSt5K2OeZ89q3Snf+IkxRfAIt9aAKg4piioTrhtP1iEFPu+OVn3Ohz24FO6L+rw9UJxBILiSBw5Q==
   dependencies:
     icss-utils "^4.0.0"
-    loader-utils "^1.0.2"
+    loader-utils "^1.2.1"
     lodash "^4.17.11"
     postcss "^7.0.6"
     postcss-modules-extract-imports "^2.0.0"
@@ -5920,7 +5920,7 @@ loader-utils@1.1.0:
     emojis-list "^2.0.0"
     json5 "^0.5.0"
 
-loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0:
+loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.1:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.2.3.tgz#1ff5dc6911c9f0a062531a4c04b609406108c2c7"
   integrity sha512-fkpz8ejdnEMG3s37wGL07iSBDg99O9D5yflE9RGNH3hRdx9SOwYfnGYdZOUIZitN8E+E2vkq3MUMYMvPYl5ZZA==
