@@ -1,16 +1,17 @@
 # ![Hello-Bar](https://raw.githubusercontent.com/AnandChowdhary/hello-bar/master/logo.png)
 
-This is an open-source alternate to the [Hello Bar](https://www.hellobar.com/) service. It's a great way to capture leads, announce a sale or discount, etc. It supports targeting based on location, referer, A/B testing, etc.
+This is an open-source alternate to the [Hello Bar](https://www.hellobar.com/) service. It's a great way to capture leads, announce a sale or discount, etc. It supports targeting based on location, referrer, A/B testing, etc.
 
 
-[![](https://img.shields.io/travis/AnandChowdhary/hello-bar.svg)](https://travis-ci.org/AnandChowdhary/hello-bar)
-[![](https://img.shields.io/bundlephobia/minzip/hello-bar.svg)](https://www.npmjs.com/package/hello-bar)
+[![Travis CI](https://img.shields.io/travis/AnandChowdhary/hello-bar.svg)](https://travis-ci.org/AnandChowdhary/hello-bar)
+[![Minzipped size](https://img.shields.io/bundlephobia/minzip/hello-bar.svg)](https://www.npmjs.com/package/hello-bar)
 [![GitHub](https://img.shields.io/github/license/anandchowdhary/hello-bar.svg)](https://github.com/AnandChowdhary/add-to-calendar/blob/master/LICENSE)
+![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/AnandChowdhary/hello-bar.svg)
 [![Made in Enschede](https://img.shields.io/badge/made%20in-Enschede-brightgreen.svg)](https://cityofenschede.com/)
 
 [![NPM](https://nodei.co/npm/hello-bar.png)](https://nodei.co/npm/hello-bar/)
 
-![Hello Bar demo](https://raw.githubusercontent.com/AnandChowdhary/hello-bar/master/ezgif-2-d4d4c80c2710.gif)
+![Hello Bar demo](https://raw.githubusercontent.com/AnandChowdhary/hello-bar/master/demo.gif)
 
 ## Usage
 
@@ -194,11 +195,12 @@ You can listen to the following events. They all return the relevant DOM element
 | `error-ip-info` | Called when the IP fetch request has an error |
 
 ## Todo
-- [x] Targetting features (single: true)
-- [ ] Better design customization (gradients?)
-- [x] Random from `text` array for A/B testing
-- [ ] Revisit ARIA for close button (?)
+- [x] Targeting features (single: true)
 - [x] Emit events for hello bar showed, closed, cta hover, etc.
+- [x] Random from `text` array for A/B testing
+- [ ] Better design customization (gradients?)
+- [ ] Support for other IP info endpoints (?)
+- [ ] Revisit ARIA for close button (?)
 
 ## License
 
