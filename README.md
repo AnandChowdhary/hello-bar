@@ -3,10 +3,10 @@
 This is an open-source alternate to the [Hello Bar](https://www.hellobar.com/) service. It's a great way to capture leads, announce a sale or discount, etc. It supports targeting based on location, referrer, A/B testing, etc.
 
 
-[![](https://img.shields.io/travis/AnandChowdhary/hello-bar.svg)](https://travis-ci.org/AnandChowdhary/hello-bar)
-[![](https://img.shields.io/bundlephobia/minzip/hello-bar.svg)](https://www.npmjs.com/package/hello-bar)
+[![Travis CI](https://img.shields.io/travis/AnandChowdhary/hello-bar.svg)](https://travis-ci.org/AnandChowdhary/hello-bar)
+[![Minzipped size](https://img.shields.io/bundlephobia/minzip/hello-bar.svg)](https://www.npmjs.com/package/hello-bar)
 [![GitHub](https://img.shields.io/github/license/anandchowdhary/hello-bar.svg)](https://github.com/AnandChowdhary/add-to-calendar/blob/master/LICENSE)
-![](https://img.shields.io/snyk/vulnerabilities/github/AnandChowdhary/hello-bar.svg)
+![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/AnandChowdhary/hello-bar.svg)
 [![Made in Enschede](https://img.shields.io/badge/made%20in-Enschede-brightgreen.svg)](https://cityofenschede.com/)
 
 [![NPM](https://nodei.co/npm/hello-bar.png)](https://nodei.co/npm/hello-bar/)
