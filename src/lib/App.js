@@ -13,6 +13,9 @@ class App {
     });
     this.settings.targeting.location = this.settings.targeting.location || {};
     this.settings.targeting.params = this.settings.targeting.params || {};
+    this.settings.targeting.time = this.settings.targeting.time || {};
+    this.settings.targeting.time.before = this.settings.targeting.time.before || {};
+    this.settings.targeting.time.after = this.settings.targeting.time.after || {};
     this.id =
       "hoverBar-" +
       Math.random()
@@ -86,6 +89,31 @@ class App {
         }
         if (this.settings.targeting.onceUser) {
           if (localStorage.getItem("hello-bar--user-showed")) return reject();
+        }
+        if (Object.keys(this.settings.targeting.time).length) {
+          const timeMatches = {
+            year: "getFullYear",
+            month: "getMonth",
+            day: "getDate",
+            dayOfWeek: "getDay",
+            hour: "getHours",
+            minute: "getMinutes",
+            second: "getSeconds",
+          };
+          const addValue = ["getMonth", "getDay"];
+          ["year", "month", "day", "hour", "minute", "second"].forEach(dateType => {
+            const timeNow = new Date();
+            if (this.settings.targeting.time.after[dateType]) {
+              let currentValue = timeNow[timeMatches[dateType]]();
+              if (addValue.includes(dateType)) currentValue += 1;
+              if (currentValue <= this.settings.targeting.time.after[dateType]) return reject();
+            }
+            if (this.settings.targeting.time.before[dateType]) {
+              let currentValue = timeNow[timeMatches[dateType]]();
+              if (addValue.includes(dateType)) currentValue += 1;
+              if (currentValue >= this.settings.targeting.time.after[dateType]) return reject();
+            }
+          });
         }
         if (this.settings.targeting.params) {
           Object.keys(this.settings.targeting.params).forEach(param => {

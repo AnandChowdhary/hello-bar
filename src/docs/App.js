@@ -6,6 +6,7 @@ const checkOutText =
 const euText =
   "🍪 This website uses cookies to make your experience better. <a class='cta' href='#'>Cookie policy</a>";
 const randomText = ["You are seeing message A!", "You are seeing message B!"];
+const eveningText = "You are visiting this website after 8 pm! Quite the night rider. ;)"
 
 class App {
   constructor() {
@@ -39,6 +40,22 @@ class App {
                 targeting: {
                   location: {
                     eu: true
+                  }
+                }
+              });
+              this.addEvents();
+            }, 600);
+            break;
+          case "evening":
+            setTimeout(() => {
+              this.libInstance = new Lib({
+                text: eveningText,
+                background: "#000",
+                targeting: {
+                  time: {
+                    after: {
+                      hour: 20
+                    }
                   }
                 }
               });
