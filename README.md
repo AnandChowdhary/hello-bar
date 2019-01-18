@@ -9,7 +9,7 @@ This is an open-source alternate to the [Hello Bar](https://www.hellobar.com/) s
 ![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/AnandChowdhary/hello-bar.svg)
 [![Made in Enschede](https://img.shields.io/badge/made%20in-Enschede-brightgreen.svg)](https://cityofenschede.com/)
 
-[![NPM](https://npm.im/hello-bar.png)](https://nodei.co/npm/hello-bar/)
+[![NPM](https://nodei.co/npm/hello-bar.png)](https://nodei.co/npm/hello-bar/)
 
 ![Hello Bar demo](https://raw.githubusercontent.com/AnandChowdhary/hello-bar/master/demo.gif)
 
