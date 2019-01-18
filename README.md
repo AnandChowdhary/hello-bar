@@ -9,7 +9,7 @@ This is an open-source alternate to the [Hello Bar](https://www.hellobar.com/) s
 ![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/AnandChowdhary/hello-bar.svg)
 [![Made in Enschede](https://img.shields.io/badge/made%20in-Enschede-brightgreen.svg)](https://cityofenschede.com/)
 
-[![NPM](https://nodei.co/npm/hello-bar.png)](https://nodei.co/npm/hello-bar/)
+[![NPM](https://npm.im/hello-bar.png)](https://nodei.co/npm/hello-bar/)
 
 ![Hello Bar demo](https://raw.githubusercontent.com/AnandChowdhary/hello-bar/master/demo.gif)
 
@@ -45,7 +45,7 @@ new HelloBar({
 
 ### Customization
 
-These are the default values, and you can customize them to the values in comments:
+These are all the options you can use in the constructor:
 
 ```js
 new HelloBar({
@@ -72,14 +72,17 @@ new HelloBar({
     params: { // Support for URL param targeting
       // Add key-value pairs here
     },
+    // Some examples below
     location: { // Add targeting by location
       eu: false, // Set to true to only show in EU countries
-      country: null // Add array of countries to show in,
-      city: null // Add array of cities to show in,
-      ip: null // Add array of IP addresses to show in,
-      postal: null // Add array of postal codes to show in,
-      region: null // Add array of regions to show in
-    }
+      country: ["us", "ca", "in"], // Array of countries to show in,
+      city: ["New Delhi"], // Array of cities to show in,
+      ip: ["192.168.1.1"], // Array of IP addresses to show in,
+      postal: [110048], // Array of postal codes to show in,
+      region: ["California"], // Array of regions to show in
+    },
+    pathName: "/about", // Only show on this path,
+    href: "https://example.com/about" // Only show on this URL
   }
 });
 ```
@@ -108,7 +111,7 @@ You can show a cookie law message only in the European Union (EU) using somethin
 ```js
 new HelloBar({
   text: '🍪 We use cookies and storage on our website. <a class="cta" href="/privacy-policy">Privacy policy</a>',
-  fixed: true, // Position fixed for this message,
+  fixed: true,
   position: "bottom",
   targeting: {
     onceUser: true,
@@ -152,6 +155,15 @@ const bar = new HelloBar({
 window.ga("create", "UA-XXXXX-Y", "auto");
 bar.on("cta-mouse-click", e => window.ga("send", "event", "ab-test", e.getAttribute("href")));
 ```
+
+## Methods
+
+You can use the following methods to manipulate the bar:
+
+| Method | Description |
+|-------|-------------|
+| `showBar()` | Show the bar |
+| `hideBar()` | Hide the bar |
 
 ## Events
 
@@ -204,4 +216,4 @@ You can listen to the following events. They all return the relevant DOM element
 
 ## License
 
-MIT (c) [Anand Chowdhary](https://anandchowdhary.com/?utm_source=github&utm_medium=repository&utm_campaign=hello-bar&utm_term=license-link)
+MIT &copy; [Anand Chowdhary](https://anandchowdhary.com/?utm_source=github&utm_medium=repository&utm_campaign=hello-bar&utm_term=license-link)

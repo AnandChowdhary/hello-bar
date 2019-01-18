@@ -17,7 +17,7 @@ class App {
     this.settings.targeting.time.before = this.settings.targeting.time.before || {};
     this.settings.targeting.time.after = this.settings.targeting.time.after || {};
     this.id =
-      "hoverBar-" +
+      "helloBar_" +
       Math.random()
         .toString(36)
         .substr(2);
@@ -124,6 +124,12 @@ class App {
             )
               return reject();
           });
+        }
+        if (this.settings.targeting.pathname) {
+          if (window.location.pathname !== this.settings.targeting.pathname) return reject();
+        }
+        if (this.settings.targeting.href) {
+          if (window.location.href !== this.settings.targeting.href) return reject();
         }
         resolve();
       };
