@@ -39,7 +39,7 @@ Add class `cta` to your `a` or `button` for a large call-to-action button. Add t
 
 ```js
 new HelloBar({
-  text: 'Buy my new book now! <a class="cta wiggle" href="#">Get $10 off!</a>'
+  text: `Buy my new book now! <a class="cta wiggle" href="#">Get $10 off!</a>`
 });
 ```
 
@@ -164,6 +164,7 @@ You can use the following methods to manipulate the bar:
 |-------|-------------|
 | `showBar()` | Show the bar |
 | `hideBar()` | Hide the bar |
+| `unMove()` | Revert moved elements to their initial state |
 
 ## Events
 
@@ -205,6 +206,7 @@ You can listen to the following events. They all return the relevant DOM element
 | `start-ip-info` | Called when the IP fetch request is started |
 | `fetch-ip-info` | Called when the IP fetch request is returned |
 | `error-ip-info` | Called when the IP fetch request has an error |
+| `window-resize` | Called with window is resized and objects and repositioned |
 
 ## Todo
 - [x] Targeting features (single: true)
