@@ -26,11 +26,14 @@
     overflow-y: hidden;
     margin-right: 1.5rem;
     overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 2rem;
 }
 
 .hello-bar p.hello-bar-text {
-    margin: 0;
-    padding: 0.66rem;
+    margin: 0 auto;
     text-align: inherit;
     max-width: 100%;
     line-height: 1;
@@ -45,9 +48,7 @@
     vertical-align: middle;
     width: auto;
     border: none;
-    padding: 0 1rem;
-    margin-top: -0.66rem;
-    margin-bottom: -0.66rem;
+    padding: 0.3rem 1rem;
     border: 0.3rem solid;
     border-radius: 10rem;
     font: inherit;
@@ -60,13 +61,6 @@
 .hello-bar a {
     color: inherit;
     font-weight: bold;
-}
-.hello-bar p.hello-bar-text::before,
-.hello-bar p.hello-bar-text::after {
-    content: "";
-    display: inline-block;
-    background-color: red;
-    width: 2rem;
 }
 .hello-bar .hello-bar-text--after {
     position: absolute;
@@ -103,13 +97,11 @@
 .hello-bar.hello-bar--size-large {
     font-size: 120%;
 }
-.hello-bar.hello-bar--size-large p.hello-bar-text {
-    padding: 1rem;
+.hello-bar.hello-bar--size-large .hello-bar-container {
+    height: 4rem;
 }
 .hello-bar.hello-bar--size-large p.hello-bar-text .cta {
-    padding: 0 1.25rem;
-    margin-top: -1rem;
-    margin-bottom: -1rem;
+    padding: 0.75rem 1.25rem;
     border: 0.5rem solid;
     margin-left: 0.5rem;
 }

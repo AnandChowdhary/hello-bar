@@ -4,11 +4,11 @@ body {
 }
 h1 {
   font-weight: 300;
-  margin-top: 30vh;
-  margin-bottom: 5vh;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
 }
 .options {
-  margin-bottom: 20vh;
+  margin-bottom: 10rem;
 }
 .options div {
   margin-bottom: 1rem;
@@ -17,5 +17,5 @@ p {
   max-width: 400px;
   line-height: 1.5;
   margin: auto;
-  margin-bottom: 10vh;
+  margin-bottom: 10rem;
 }

@@ -1,5 +1,6 @@
 import "./css/App.css";
 import fontColorContrast from "font-color-contrast";
+import debounce from "debounce";
 import cachedFetch from "./cachedFetch";
 import euCountries from "./euCountries";
 import getParameterByName from "./getParameterByName";
@@ -54,6 +55,14 @@ class App {
       this.marginProp = "marginTop";
     }
     this.events = {};
+    window.addEventListener("resize", debounce(() => {
+      if (!document.querySelector(`#${this.id}`)) return;
+      this.$emit("window-resize");
+      this.unMove();
+      if (!this.settings.disableBodyMove) this.moveElements(document.body);
+      this.moveElements(this.settings.move);
+      this.colorizeBar();
+    }, 200));
     this.confirmShow()
       .then(() => {
         this.$emit("before-created");
@@ -172,11 +181,7 @@ class App {
     this.$emit("show-bar", this.bar);
   }
 
-  hideBar() {
-    if (!document.querySelector(`#${this.id}`)) return;
-    this.bar.classList.remove("hello-bar--is-visible");
-    sessionStorage.setItem("hello-bar--session-showed", true);
-    localStorage.setItem("hello-bar--user-showed", true);
+  unMove() {
     const movedElements = document.querySelectorAll(".hello-bar--has-moved");
     for (let i = 0; i < movedElements.length; i++) {
       const currentMargin = parseInt(movedElements[i].style[this.marginProp]);
@@ -184,6 +189,14 @@ class App {
         this.height}px`;
       movedElements[i].classList.remove("hello-bar--has-moved");
     }
+  }
+
+  hideBar() {
+    if (!document.querySelector(`#${this.id}`)) return;
+    this.bar.classList.remove("hello-bar--is-visible");
+    sessionStorage.setItem("hello-bar--session-showed", true);
+    localStorage.setItem("hello-bar--user-showed", true);
+    this.unMove();
     setTimeout(() => {
       this.bar.parentNode.removeChild(this.bar);
     }, (this.settings.duration || 500) + 1);
@@ -232,12 +245,6 @@ class App {
     this.bar.style.color = textColor;
     this.bar.style.textAlign = this.settings.align || "center";
     if (document.querySelector(".hello-bar p.hello-bar-text .cta")) {
-      document.querySelector(
-        ".hello-bar p.hello-bar-text .cta"
-      ).style.height = `${this.height}px`;
-      document.querySelector(
-        ".hello-bar p.hello-bar-text .cta"
-      ).style.lineHeight = `${this.height}px`;
       document.querySelector(".hello-bar p.hello-bar-text .cta").style.color =
         this.settings.background || "#eeeeee";
       document.querySelector(
