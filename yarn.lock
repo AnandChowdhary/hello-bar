@@ -5522,10 +5522,10 @@ jest-mock@^23.2.0:
   resolved "https://registry.yarnpkg.com/jest-mock/-/jest-mock-23.2.0.tgz#ad1c60f29e8719d47c26e1138098b6d18b261134"
   integrity sha1-rRxg8p6HGdR8JuETgJi20YsmETQ=
 
-jest-pnp-resolver@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/jest-pnp-resolver/-/jest-pnp-resolver-1.0.2.tgz#470384ae9ea31f72136db52618aa4010ff23b715"
-  integrity sha512-H2DvUlwdMedNGv4FOliPDnxani6ATWy70xe2eckGJgkLoMaWzRPqpSlc5ShqX0Ltk5OhRQvPQY2LLZPOpgcc7g==
+jest-pnp-resolver@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/jest-pnp-resolver/-/jest-pnp-resolver-1.1.0.tgz#b6e2eb14f6ceddfd1cde40119be67ddae1738c2b"
+  integrity sha512-/tuTb5um2nQvybL7Scxy6oJF5cbWWawugurVIMnnXhBSlUjNEwKpPeaYT7K/f/EZupmrKfiwQ95f3J7kShAZEA==
 
 jest-regex-util@^23.3.0:
   version "23.3.0"
