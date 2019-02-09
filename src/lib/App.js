@@ -48,6 +48,9 @@ class App {
     if (this.settings.fixed) {
       this.bar.classList.add("hello-bar--is-fixed");
     }
+    if (this.settings.multiline) {
+      this.bar.classList.add("hello-bar--is-multiline");
+    }
     if (this.settings.position === "bottom") {
       this.bar.classList.add("hello-bar--is-bottom");
       this.marginProp = "marginBottom";

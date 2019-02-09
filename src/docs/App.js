@@ -7,6 +7,7 @@ const euText =
   "🍪 This website uses cookies to make your experience better. <a class='cta' href='#'>Cookie policy</a>";
 const randomText = ["You are seeing message A!", "You are seeing message B!"];
 const eveningText = "You are visiting this website after 8 pm! Quite the night rider. ;)"
+const multiLineText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non lorem quam. Nunc at risus auctor felis semper semper. Proin nec consectetur dolor, eu congue tellus. Nulla ac libero viverra, aliquam mi eget, auctor diam. Vestibulum eget leo consequat, tempus eros ac, bibendum ligula.";
 
 class App {
   constructor() {
@@ -42,6 +43,15 @@ class App {
                     eu: true
                   }
                 }
+              });
+              this.addEvents();
+            }, 600);
+            break;
+          case "multiline":
+            setTimeout(() => {
+              this.libInstance = new Lib({
+                text: multiLineText,
+                multiline: true
               });
               this.addEvents();
             }, 600);

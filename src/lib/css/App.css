@@ -113,6 +113,15 @@
     height: 1.33rem;
 }
 
+.hello-bar.hello-bar--is-multiline .hello-bar-container {
+    height: auto;
+    padding: 0.5rem 0;
+}
+.hello-bar.hello-bar--is-multiline p.hello-bar-text {
+    white-space: normal;
+    line-height: inherit;
+}
+
 @keyframes hello-bar-wiggle {
     2% { transform: translateX(3px) rotate(2deg); }
     4% { transform: translateX(-3px) rotate(-2deg); }

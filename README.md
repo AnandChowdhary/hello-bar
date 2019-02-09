@@ -60,6 +60,7 @@ new HelloBar({
   background: "#eee", // Background color
   textColor: null, // Black or white text is automagically determined; you can specify a color if you like
   size: "normal", // Set to "large" for a big banner like Hello Bar,
+  multiline: false, // Set to true to have multiple lines of text
   disableBodyMove: false, // Set to true to not move the body slightly down,
   hide: false, // Set to true to not show the bar
   ipEndpoint: "https://ipinfo.io/json", // Endpoint to get IP info in case of location-based targeting
