@@ -12,6 +12,7 @@ const multiLineText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 class App {
   constructor() {
     this.libInstance = new Lib({
+      id: "github",
       text: checkOutText,
       background: "#5352ed",
       size: "large",
@@ -27,6 +28,7 @@ class App {
           case "cookie-law-1":
             setTimeout(() => {
               this.libInstance = new Lib({
+                id: "eu",
                 text: euText,
                 position: "bottom",
                 fixed: true
@@ -37,6 +39,7 @@ class App {
           case "cookie-law-2":
             setTimeout(() => {
               this.libInstance = new Lib({
+                id: "eu-2",
                 text: euText,
                 targeting: {
                   location: {
@@ -50,6 +53,7 @@ class App {
           case "multiline":
             setTimeout(() => {
               this.libInstance = new Lib({
+                id: "multiline",
                 text: multiLineText,
                 multiline: true
               });
@@ -59,6 +63,7 @@ class App {
           case "evening":
             setTimeout(() => {
               this.libInstance = new Lib({
+                id: "evening",
                 text: eveningText,
                 background: "#000",
                 targeting: {
@@ -75,6 +80,7 @@ class App {
           case "random":
             setTimeout(() => {
               this.libInstance = new Lib({
+                id: "a-b-test",
                 text: randomText,
                 background: "#e24331",
                 size: "large"
@@ -85,6 +91,7 @@ class App {
           default:
             setTimeout(() => {
               this.libInstance = new Lib({
+                id: "github",
                 text: checkOutText,
                 background: "#5352ed",
                 size: "large"

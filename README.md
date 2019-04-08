@@ -49,13 +49,14 @@ These are all the options you can use in the constructor:
 
 ```js
 new HelloBar({
+  id: "", // A unique ID for this hello bar content (required for targeting)
   text: "", // Text you want the banner to display
   hideClose: false, // Set to `true` to hide close button
   position: "top", // Set to "bottom" to have the bar in the bottom instead of top
   fixed: false, // Set to `true` to set the position as fixed (on scroll)
   move: null, // Element(s) to force add margin-top to, in case you have any absolutely positioned elements
-  duration: 500, // Animation duration in miliseconds
-  delay: 1, // Delay in miliseconds
+  duration: 500, // Animation duration in ms
+  delay: 1, // Delay in ms
   align: "center", // Text alignment in CSS ("left", "right", or "center")
   background: "#eee", // Background color
   textColor: null, // Black or white text is automagically determined; you can specify a color if you like

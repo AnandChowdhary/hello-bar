@@ -22,6 +22,7 @@ class App {
       Math.random()
         .toString(36)
         .substr(2);
+    if (this.settings.id) this.id = this.settings.id;
     this.bar = document.createElement("div");
     this.bar.setAttribute("id", this.id);
     if (typeof this.settings.text === "object") {
@@ -96,11 +97,11 @@ class App {
     return new Promise((resolve, reject) => {
       const finishConfirmation = () => {
         if (this.settings.targeting.once) {
-          if (sessionStorage.getItem("hello-bar--session-showed"))
+          if (sessionStorage.getItem(`hello-bar-${this.id}--session-showed`))
             return reject();
         }
         if (this.settings.targeting.onceUser) {
-          if (localStorage.getItem("hello-bar--user-showed")) return reject();
+          if (localStorage.getItem(`hello-bar-${this.id}--user-showed`)) return reject();
         }
         if (Object.keys(this.settings.targeting.time).length) {
           const timeMatches = {
@@ -197,8 +198,8 @@ class App {
   hideBar() {
     if (!document.querySelector(`#${this.id}`)) return;
     this.bar.classList.remove("hello-bar--is-visible");
-    sessionStorage.setItem("hello-bar--session-showed", true);
-    localStorage.setItem("hello-bar--user-showed", true);
+    sessionStorage.setItem(`hello-bar-${this.id}--session-showed`, true);
+    localStorage.setItem(`hello-bar-${this.id}--user-showed`, true);
     this.unMove();
     setTimeout(() => {
       this.bar.parentNode.removeChild(this.bar);
