@@ -307,15 +307,7 @@ class App {
         typeof elements.classList.add === "function" &&
         !elements.classList.contains("hello-bar--has-moved")
       ) {
-        const style =
-          elements.currentStyle || window.getComputedStyle(elements);
-        if (typeof style === "object" && style[this.marginProp]) {
-          elements.style[this.marginProp] = `${parseInt(
-            style[this.marginProp]
-          ) + this.height}px`;
-        } else {
-          elements.style[this.marginProp] = `${this.height}px`;
-        }
+        elements.style[this.marginProp] = `${this.height}px`;
         this.$emit("move-element", elements);
         elements.classList.add("hello-bar--has-moved");
       }
