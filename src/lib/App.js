@@ -63,6 +63,7 @@ class App {
       if (!document.querySelector(`#${this.id}`)) return;
       this.$emit("window-resize");
       this.unMove();
+      this.calculateHeight();
       if (!this.settings.disableBodyMove) this.moveElements(document.body);
       this.moveElements(this.settings.move);
       this.colorizeBar();
