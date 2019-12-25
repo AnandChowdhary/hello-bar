@@ -64,7 +64,7 @@
 }
 .hello-bar .hello-bar-text--after {
     position: absolute;
-    right: 1rem;
+    right: 0;
     z-index: 1;
     top: 0;
     bottom: 0;
