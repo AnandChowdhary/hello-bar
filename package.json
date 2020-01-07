@@ -67,7 +67,7 @@
     "react-app-polyfill": "^1.0.5",
     "react-dev-utils": "^10.0.0",
     "react-dom": "^16.12.0",
-    "resolve": "1.14.1",
+    "resolve": "1.14.2",
     "sass-loader": "8.0.0",
     "style-loader": "1.1.2",
     "terser-webpack-plugin": "2.3.1",
