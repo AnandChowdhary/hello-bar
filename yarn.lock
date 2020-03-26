@@ -1184,10 +1184,10 @@
     source-map "^0.6.1"
     write-file-atomic "^3.0.0"
 
-"@jest/types@^25.2.0":
-  version "25.2.0"
-  resolved "https://registry.yarnpkg.com/@jest/types/-/types-25.2.0.tgz#0659866d9b31843a737b601b950a690e576a415a"
-  integrity sha512-RLWBAON8LEjzD60Cn0XFmvMNTuV+scKlufIUApnG7VF7oA2jCEk5J0uzEchx6xuOwhrHohQM28K4CmEjgtDEwg==
+"@jest/types@^25.2.0", "@jest/types@^25.2.1":
+  version "25.2.1"
+  resolved "https://registry.yarnpkg.com/@jest/types/-/types-25.2.1.tgz#692c8950d4c21fc6b4cfd141c3470b735c5bffca"
+  integrity sha512-WuGFGJ3Rrycg+5ZwQTWKjr21M9psANPAWYD28K42hSeUzhv1H591VXIoq0tjs00mydhNOgVOkKSpzRS3CrOYFw==
   dependencies:
     "@types/istanbul-lib-coverage" "^2.0.0"
     "@types/istanbul-reports" "^1.1.1"
@@ -5966,12 +5966,12 @@ jest-resolve-dependencies@^25.2.0:
     jest-regex-util "^25.2.0"
     jest-snapshot "^25.2.0"
 
-jest-resolve@25.2.0, jest-resolve@^25.2.0:
-  version "25.2.0"
-  resolved "https://registry.yarnpkg.com/jest-resolve/-/jest-resolve-25.2.0.tgz#b1f5cc1ca1a67a215b9f425003eeabf5e60e98ad"
-  integrity sha512-VvmYRMDBFjKUri59zVa91s3V22XfON05oBIl+iNIktxOHxir0ui52+wVTBFGK19p2/aX0UzjKHkW/wJY1cELAw==
+jest-resolve@25.2.1, jest-resolve@^25.2.0:
+  version "25.2.1"
+  resolved "https://registry.yarnpkg.com/jest-resolve/-/jest-resolve-25.2.1.tgz#44f8f87c5688bad31e762f123540b09cac5907f8"
+  integrity sha512-5rVc6khEckNH62adcR+jlYd34/jBO/U22VHf+elmyO6UBHNWXSbfy63+spJRN4GQ/0dbu6Hi6ZVdR58bmNG2Eg==
   dependencies:
-    "@jest/types" "^25.2.0"
+    "@jest/types" "^25.2.1"
     browser-resolve "^1.11.3"
     chalk "^3.0.0"
     jest-pnp-resolver "^1.2.1"
