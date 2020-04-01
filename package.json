@@ -51,7 +51,7 @@
     "file-loader": "6.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "9.0.0",
-    "html-webpack-plugin": "4.0.3",
+    "html-webpack-plugin": "4.0.4",
     "identity-obj-proxy": "3.0.0",
     "jest": "25.2.4",
     "jest-pnp-resolver": "1.2.1",
